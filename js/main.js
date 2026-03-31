@@ -100,27 +100,24 @@ function openLogin()  { document.getElementById('loginModal').classList.add('ope
 function closeLogin() { document.getElementById('loginModal').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
 function closeAll()   { closeCart(); closeLogin(); }
 
-function doLogin() {
-  const email = document.getElementById('loginEmail').value || 'amiga@auralia.com';
-  setLoggedIn(email);
-  closeLogin();
+async function mostrarUsuario() {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (user) {
+    console.log(user);
+
+    // Nombre desde Google
+    const nombre = user.user_metadata?.full_name || user.email;
+
+    const userElement = document.getElementById("user-name");
+
+    if (userElement) {
+      userElement.textContent = nombre;
+    }
+  }
 }
 
-function googleLogin() {
-  setLoggedIn('usuaria@gmail.com');
-  closeLogin();
-}
-
-function setLoggedIn(email) {
-  loggedIn = true;
-  const name = email.split('@')[0];
-  document.getElementById('loginNavBtn').style.display = 'none';
-  document.getElementById('userChip').classList.add('visible');
-  document.getElementById('userAvatar').textContent = name[0].toUpperCase();
-  document.getElementById('userNameNav').textContent = name;
-  showToast('Bienvenida de vuelta 🌸', '✨');
-}
-
+mostrarUsuario();
 // ---- NEWSLETTER ----
 function subscribeNewsletter() {
   const email = document.getElementById('nlEmail').value;
@@ -188,6 +185,22 @@ function filterArticles(cat, pillBtn) {
     }
   });
 }
+supabase.auth.onAuthStateChange((event, session) => {
+  console.log("Evento auth:", event);
+
+  if (session?.user) {
+    const user = session.user;
+
+    const nombre = user.user_metadata?.full_name || user.email;
+
+    const userElement = document.getElementById("user-name");
+
+    if (userElement) {
+      userElement.textContent = nombre;
+    }
+  }
+});
+
 
 // ---- INIT ----
 loadProducts();

@@ -953,9 +953,14 @@ function doLogin() {
   closeLogin();
 }
 
-function googleLogin() {
-  setLoggedIn('usuaria@gmail.com');
-  closeLogin();
+async function googleLogin() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+  });
+
+  if (error) {
+    console.error("Error login:", error);
+  }
 }
 
 function setLoggedIn(email) {
@@ -1039,7 +1044,14 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ---- INIT ----
 renderProducts();
 
+supabase.auth.onAuthStateChange((event, session) => {
+  if (session?.user) {
+    const user = session.user;
 
+    const email = user.email;
+    setLoggedIn(email);
+  }
+});
 
 
 </script>
