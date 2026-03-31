@@ -1,0 +1,1028 @@
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Auralia<span class="dot">·</span>bb</a>
+
+  <ul class="nav-links">
+    <li><a href="#categorias">Categorías</a></li>
+    <li><a href="#productos">Tienda</a></li>
+    <li><a href="#rituales">Rituales</a></li>
+    <li><a href="#nosotros">Nosotras</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="nav-btn" id="loginNavBtn" onclick="openLogin()">Ingresar</button>
+    <div class="user-chip" id="userChip">
+      <div class="user-avatar" id="userAvatar">?</div>
+      <span class="user-name" id="userNameNav">Usuario</span>
+    </div>
+    <button class="cart-btn" onclick="openCart()">
+      🛒
+      <div class="cart-count" id="cartCount">0</div>
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#categorias" onclick="closeMobileMenu()">Categorías</a>
+  <a href="#productos" onclick="closeMobileMenu()">Tienda</a>
+  <a href="#rituales" onclick="closeMobileMenu()">Rituales</a>
+  <a href="#nosotros" onclick="closeMobileMenu()">Nosotras</a>
+  <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+  <div class="mobile-menu-actions">
+    <button class="mobile-login-btn" onclick="openLogin(); closeMobileMenu()">Ingresar</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Bahía Blanca · Holística</div>
+    <h1 class="hero-title">
+      Energía, aroma<br>
+      <em>& ritual</em>
+    </h1>
+    <p class="hero-desc">Sahumerios, velas, cristales y mucho más. Cada producto creado para elevar la vibración de tu espacio y tu ser.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">
+        Explorar tienda
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="btn-ghost" onclick="document.getElementById('nosotros').scrollIntoView({behavior:'smooth'})">
+        Nuestra historia
+        <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5h10M6 1l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- Background decorative circles -->
+    <div class="hero-bg-circles">
+      <div class="hero-circle" style="width:480px;height:480px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+      <div class="hero-circle" style="width:340px;height:340px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+    </div>
+
+    <div class="hero-center-piece">
+      <!-- Candle visual -->
+      <div class="hero-candle">
+        <span class="hero-candle-label">auralia</span>
+      </div>
+      <!-- Crystal row -->
+      <div class="hero-crystals">
+        <svg class="crystal" width="24" height="40" viewBox="0 0 24 40"><polygon points="12,0 22,12 12,40 2,12" fill="#b8d4d0" opacity="0.8"/><polygon points="12,0 22,12 12,20" fill="#9fc5c1" opacity="0.5"/></svg>
+        <svg class="crystal" width="18" height="30" viewBox="0 0 18 30"><polygon points="9,0 17,10 9,30 1,10" fill="#d4c5d8" opacity="0.8"/><polygon points="9,0 17,10 9,18" fill="#c0adc5" opacity="0.5"/></svg>
+        <svg class="crystal" width="20" height="34" viewBox="0 0 20 34"><polygon points="10,0 18,11 10,34 2,11" fill="#b8c4d4" opacity="0.8"/><polygon points="10,0 18,11 10,20" fill="#a0b0c0" opacity="0.5"/></svg>
+      </div>
+    </div>
+
+    <!-- Badge -->
+    <div class="hero-badge">
+      <div class="hero-badge-label">Envíos a todo el país</div>
+      <div class="hero-badge-val">🚚 Argentina</div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><strong>Sahumerios</strong> <span class="marquee-sep">·</span> energía y aroma para tu hogar</span>
+    <span class="marquee-item"><strong>Velas</strong> <span class="marquee-sep">·</span> luz que transforma</span>
+    <span class="marquee-item"><strong>Cristales</strong> <span class="marquee-sep">·</span> cuarzos y piedras naturales</span>
+    <span class="marquee-item"><strong>Bombitas</strong> <span class="marquee-sep">·</span> rituales de baño</span>
+    <span class="marquee-item"><strong>Difusores</strong> <span class="marquee-sep">·</span> aromaterapia en movimiento</span>
+    <span class="marquee-item"><strong>Sahumerios</strong> <span class="marquee-sep">·</span> energía y aroma para tu hogar</span>
+    <span class="marquee-item"><strong>Velas</strong> <span class="marquee-sep">·</span> luz que transforma</span>
+    <span class="marquee-item"><strong>Cristales</strong> <span class="marquee-sep">·</span> cuarzos y piedras naturales</span>
+    <span class="marquee-item"><strong>Bombitas</strong> <span class="marquee-sep">·</span> rituales de baño</span>
+    <span class="marquee-item"><strong>Difusores</strong> <span class="marquee-sep">·</span> aromaterapia en movimiento</span>
+  </div>
+</div>
+
+<!-- Categories -->
+<section class="categories-section" id="categorias">
+  <div class="categories-header reveal">
+    <div>
+      <div class="section-tag">Explorar</div>
+      <h2 class="section-title">Por <em>categoría</em></h2>
+    </div>
+    <div style="font-size:13px;color:var(--muted);font-weight:300;">5 colecciones disponibles</div>
+  </div>
+  <div class="categories-grid reveal">
+    <div class="cat-card active" onclick="filterProducts('todos', this)">
+      <div class="cat-card-inner">
+        <span class="cat-icon">🌿</span>
+        <span class="cat-card-name">Todos</span>
+        <span class="cat-card-count">ver todo</span>
+      </div>
+    </div>
+    <div class="cat-card" onclick="filterProducts('sahumerios', this)">
+      <div class="cat-card-inner">
+        <span class="cat-icon">🪄</span>
+        <span class="cat-card-name">Sahumerios</span>
+        <span class="cat-card-count">3 productos</span>
+      </div>
+    </div>
+    <div class="cat-card" onclick="filterProducts('velas', this)">
+      <div class="cat-card-inner">
+        <span class="cat-icon">🕯️</span>
+        <span class="cat-card-name">Velas</span>
+        <span class="cat-card-count">2 productos</span>
+      </div>
+    </div>
+    <div class="cat-card" onclick="filterProducts('cristales', this)">
+      <div class="cat-card-inner">
+        <span class="cat-icon">💎</span>
+        <span class="cat-card-name">Cristales</span>
+        <span class="cat-card-count">2 productos</span>
+      </div>
+    </div>
+    <div class="cat-card" onclick="filterProducts('kits', this)">
+      <div class="cat-card-inner">
+        <span class="cat-icon">🎁</span>
+        <span class="cat-card-name">Kits</span>
+        <span class="cat-card-count">2 productos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products-section" id="productos">
+  <div class="reveal">
+    <div class="section-tag">Tienda</div>
+    <h2 class="section-title">Nuestros <em>productos</em></h2>
+    <p class="section-sub">Cada pieza elegida con intención. Encontrá lo que necesitás para tu ritual.</p>
+  </div>
+
+  <div class="products-filter reveal" id="filterBar">
+    <button class="filter-pill active" onclick="filterProducts('todos', null, this)">Todos</button>
+    <button class="filter-pill" onclick="filterProducts('sahumerios', null, this)">Sahumerios</button>
+    <button class="filter-pill" onclick="filterProducts('velas', null, this)">Velas</button>
+    <button class="filter-pill" onclick="filterProducts('cristales', null, this)">Cristales</button>
+    <button class="filter-pill" onclick="filterProducts('bombitas', null, this)">Bombitas</button>
+    <button class="filter-pill" onclick="filterProducts('difusores', null, this)">Difusores</button>
+    <button class="filter-pill" onclick="filterProducts('kits', null, this)">Kits</button>
+  </div>
+
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="nosotros">
+  <div class="about-left reveal">
+    <div class="section-tag">Nuestra historia</div>
+    <h2 class="section-title">Cuerpo, mente<br><em>& alma</em></h2>
+    <div class="about-quote">
+      <p>"Cada producto que creamos nace de un ritual. Creemos que el bienestar empieza en los pequeños momentos."</p>
+      <cite>— Auralia.bb, Bahía Blanca</cite>
+    </div>
+    <p style="font-size:14px;color:var(--muted);font-weight:300;line-height:1.85;max-width:360px;margin-bottom:32px;">
+      Somos un emprendimiento de Bahía Blanca dedicado al bienestar holístico. Trabajamos con sahumerios, velas, cristales y productos energéticos seleccionados con amor e intención para cada espacio y cada persona.
+    </p>
+    <div class="about-pillars">
+      <div class="pillar-item">
+        <span class="pillar-icon">🌿</span>
+        <div class="pillar-line"></div>
+        <span class="pillar-name">Natural</span>
+      </div>
+      <div class="pillar-item">
+        <span class="pillar-icon">✨</span>
+        <div class="pillar-line"></div>
+        <span class="pillar-name">Energía</span>
+      </div>
+      <div class="pillar-item">
+        <span class="pillar-icon">🕊️</span>
+        <div class="pillar-line"></div>
+        <span class="pillar-name">Bienestar</span>
+      </div>
+      <div class="pillar-item">
+        <span class="pillar-icon">💛</span>
+        <div class="pillar-line"></div>
+        <span class="pillar-name">Con amor</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right">
+    <div class="about-visual">
+      <div class="about-circle">
+        <div>
+          <div class="about-logo-text">Auralia.bb</div>
+          <div class="about-logo-sub">Sahumerios · Velas · Cristales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-section">
+  <div class="reveal">
+    <div class="section-tag" style="justify-content:center">Reseñas</div>
+    <h2 class="section-title">Lo que dicen<br><em>nuestras clientas</em></h2>
+  </div>
+  <div class="testimonials-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Los sahumerios son increíbles, el aroma llena toda la casa. Lo mejor es que duran mucho tiempo. Ya pedí por tercera vez."</p>
+      <div class="testi-author"><div class="testi-dot"></div>Valentina R. — Bahía Blanca</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Las bombitas de baño son una experiencia. Se nota que todo está hecho con cuidado y amor. El packaging también es hermoso."</p>
+      <div class="testi-author"><div class="testi-dot"></div>Luciana M. — Buenos Aires</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Compré el kit de cristales y quedé fascinada. Llegó súper bien empacado con una tarjeta explicando cada piedra."</p>
+      <div class="testi-author"><div class="testi-dot"></div>Martina S. — Córdoba</div>
+    </div>
+  </div>
+</section>
+
+<!-- Shipping strip -->
+<div class="shipping-strip">
+  <div class="strip-item">
+    <span class="strip-icon">🚚</span>
+    <div>
+      <div class="strip-text-head">Envíos a todo el país</div>
+      <div class="strip-text-sub">Argentina y más</div>
+    </div>
+  </div>
+  <div class="strip-item">
+    <span class="strip-icon">🎁</span>
+    <div>
+      <div class="strip-text-head">Packaging especial</div>
+      <div class="strip-text-sub">Cada pedido con amor</div>
+    </div>
+  </div>
+  <div class="strip-item">
+    <span class="strip-icon">💬</span>
+    <div>
+      <div class="strip-text-head">Atención personalizada</div>
+      <div class="strip-text-sub">Por Instagram y WhatsApp</div>
+    </div>
+  </div>
+  <div class="strip-item">
+    <span class="strip-icon">✨</span>
+    <div>
+      <div class="strip-text-head">Productos naturales</div>
+      <div class="strip-text-sub">Seleccionados con intención</div>
+    </div>
+  </div>
+</div>
+
+<!-- RITUALES / BLOG -->
+<section class="rituales-section" id="rituales">
+  <div class="rituales-header reveal">
+    <div>
+      <div class="section-tag">Sabiduría</div>
+      <h2 class="section-title">Rituales & <em>guías</em></h2>
+      <p class="section-sub">Aprendé a usar cada producto con intención. Pequeños rituales para grandes transformaciones.</p>
+    </div>
+    <div class="rituales-tabs">
+      <button class="rtab active" onclick="filterArticles('todos', this)">Todos</button>
+      <button class="rtab" onclick="filterArticles('sahumerios', this)">Sahumerios</button>
+      <button class="rtab" onclick="filterArticles('cristales', this)">Cristales</button>
+      <button class="rtab" onclick="filterArticles('velas', this)">Velas</button>
+    </div>
+  </div>
+
+  <div class="rituales-grid" id="ritualesGrid">
+
+    <!-- Artículo 1 — Sahumerios -->
+    <article class="ritual-card reveal" data-cat="sahumerios">
+      <div class="ritual-img ritual-img--sahumero">
+        <div class="ritual-img-overlay"></div>
+        <span class="ritual-cat-badge">Sahumerios</span>
+        <div class="ritual-visual">🪄</div>
+        <div class="ritual-steps-preview">
+          <span>4 pasos</span>
+        </div>
+      </div>
+      <div class="ritual-body">
+        <div class="ritual-meta">
+          <span class="ritual-time">⏱ 15 min</span>
+          <span class="ritual-level">Principiante</span>
+        </div>
+        <h3 class="ritual-title">Cómo sahumar tu espacio correctamente</h3>
+        <p class="ritual-desc">El sahumerio no es solo encender un palito. Existe un orden, una intención y un cierre que marcan la diferencia energética en tu hogar.</p>
+        <div class="ritual-steps" id="steps-1" style="display:none">
+          <div class="ritual-step">
+            <span class="step-num">01</span>
+            <div>
+              <strong>Ordená y limpiá físicamente</strong>
+              <p>Antes de sahumar, el espacio debe estar ordenado. Tirá lo que ya no suma, abrí las ventanas.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">02</span>
+            <div>
+              <strong>Encendé el sahumerio</strong>
+              <p>Usá el sahumador. Dejá que el humo fluya naturalmente. No lo apagues bruscamente.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">03</span>
+            <div>
+              <strong>Recorré de adentro hacia afuera</strong>
+              <p>Empezá desde el fondo de la casa y avanzá hacia la puerta, liberando energía densa.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">04</span>
+            <div>
+              <strong>Cerrá con intención</strong>
+              <p>Al terminar, decí en voz alta o mentalmente lo que querés invocar en ese espacio.</p>
+            </div>
+          </div>
+        </div>
+        <button class="ritual-toggle" onclick="toggleSteps(1, this)">
+          Ver los 4 pasos
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="ritual-product-link">
+          <span>Producto ideal:</span>
+          <span class="ritual-product-name">Sahumerio Palo Santo</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Artículo 2 — Cristales -->
+    <article class="ritual-card reveal" data-cat="cristales">
+      <div class="ritual-img ritual-img--cristal">
+        <div class="ritual-img-overlay"></div>
+        <span class="ritual-cat-badge">Cristales</span>
+        <div class="ritual-visual">💎</div>
+        <div class="ritual-steps-preview">
+          <span>5 pasos</span>
+        </div>
+      </div>
+      <div class="ritual-body">
+        <div class="ritual-meta">
+          <span class="ritual-time">⏱ 20 min</span>
+          <span class="ritual-level">Principiante</span>
+        </div>
+        <h3 class="ritual-title">Cómo limpiar y programar tu cuarzo</h3>
+        <p class="ritual-desc">Los cristales absorben energía del entorno. Antes de usarlos, necesitan ser limpiados y programados con tu intención personal.</p>
+        <div class="ritual-steps" id="steps-2" style="display:none">
+          <div class="ritual-step">
+            <span class="step-num">01</span>
+            <div>
+              <strong>Limpieza con agua y sal</strong>
+              <p>Dejá el cuarzo en agua con sal gruesa durante una noche. No todos los cristales toleran el agua (consultá primero).</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">02</span>
+            <div>
+              <strong>Aireación bajo el sol o la luna</strong>
+              <p>Exponer el cristal a la luz solar 1 hora o a la luna llena toda la noche lo recarga completamente.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">03</span>
+            <div>
+              <strong>Sahumalo</strong>
+              <p>Pasá el cuarzo por el humo del palo santo o lavanda para terminar la limpieza energética.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">04</span>
+            <div>
+              <strong>Tomalo en tus manos</strong>
+              <p>Cerrá los ojos, respirá profundo y formulá tu intención claramente. El cristal la registra.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">05</span>
+            <div>
+              <strong>Ubicalo con propósito</strong>
+              <p>En tu mesa de noche, escritorio o cartera según para qué lo programaste.</p>
+            </div>
+          </div>
+        </div>
+        <button class="ritual-toggle" onclick="toggleSteps(2, this)">
+          Ver los 5 pasos
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="ritual-product-link">
+          <span>Producto ideal:</span>
+          <span class="ritual-product-name">Cuarzo Rosa · Amatista</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Artículo 3 — Velas -->
+    <article class="ritual-card reveal" data-cat="velas">
+      <div class="ritual-img ritual-img--vela">
+        <div class="ritual-img-overlay"></div>
+        <span class="ritual-cat-badge">Velas</span>
+        <div class="ritual-visual">🕯️</div>
+        <div class="ritual-steps-preview">
+          <span>3 pasos</span>
+        </div>
+      </div>
+      <div class="ritual-body">
+        <div class="ritual-meta">
+          <span class="ritual-time">⏱ 10 min</span>
+          <span class="ritual-level">Fácil</span>
+        </div>
+        <h3 class="ritual-title">Ritual de vela para atraer lo que deseás</h3>
+        <p class="ritual-desc">Las velas son uno de los elementos más poderosos para manifestar. El fuego transforma la intención en energía activa.</p>
+        <div class="ritual-steps" id="steps-3" style="display:none">
+          <div class="ritual-step">
+            <span class="step-num">01</span>
+            <div>
+              <strong>Preparate vos primero</strong>
+              <p>Antes de encender la vela, cerrá los ojos 2 minutos. Respirá. Definí con precisión qué es lo que querés atraer.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">02</span>
+            <div>
+              <strong>Escribí tu intención</strong>
+              <p>En un papel, escribí tu deseo en presente positivo. "Recibo abundancia", no "quiero dejar de tener deudas".</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">03</span>
+            <div>
+              <strong>Encendé la vela y observá</strong>
+              <p>Mirá la llama unos minutos. Agradecé de antemano. Dejá que la vela se consuma sola en un lugar seguro.</p>
+            </div>
+          </div>
+        </div>
+        <button class="ritual-toggle" onclick="toggleSteps(3, this)">
+          Ver los 3 pasos
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="ritual-product-link">
+          <span>Producto ideal:</span>
+          <span class="ritual-product-name">Vela de Soja Natural</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Artículo 4 — Bombitas -->
+    <article class="ritual-card reveal" data-cat="sahumerios">
+      <div class="ritual-img ritual-img--bomba">
+        <div class="ritual-img-overlay"></div>
+        <span class="ritual-cat-badge">Baño ritual</span>
+        <div class="ritual-visual">🌸</div>
+        <div class="ritual-steps-preview">
+          <span>4 pasos</span>
+        </div>
+      </div>
+      <div class="ritual-body">
+        <div class="ritual-meta">
+          <span class="ritual-time">⏱ 30 min</span>
+          <span class="ritual-level">Relajación</span>
+        </div>
+        <h3 class="ritual-title">El baño de descarga energética</h3>
+        <p class="ritual-desc">El agua tiene memoria y capacidad de transformación. Un baño ritual con bombita puede cortar un día pesado y reiniciarte por completo.</p>
+        <div class="ritual-steps" id="steps-4" style="display:none">
+          <div class="ritual-step">
+            <span class="step-num">01</span>
+            <div>
+              <strong>Prepará el ambiente</strong>
+              <p>Apagá luces, encendé una vela o el difusor. Sin celular. Este es tu tiempo.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">02</span>
+            <div>
+              <strong>Temperatura ideal</strong>
+              <p>El agua tibia (no muy caliente) permite que el cuerpo se relaje sin estrés. Agregá la bombita cuando la bañera esté llena.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">03</span>
+            <div>
+              <strong>Sumergite con intención</strong>
+              <p>Mientras el agua burbujea, visualizá que todo lo que no te pertenece se disuelve con las sales y flores.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">04</span>
+            <div>
+              <strong>Cerrá el ritual</strong>
+              <p>Al salir, secate despacio. Ponte ropa cómoda. Tomá agua. El cuerpo procesó energía, necesita hidratarse.</p>
+            </div>
+          </div>
+        </div>
+        <button class="ritual-toggle" onclick="toggleSteps(4, this)">
+          Ver los 4 pasos
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="ritual-product-link">
+          <span>Producto ideal:</span>
+          <span class="ritual-product-name">Bombita de Baño Rosa</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Artículo 5 — Luna -->
+    <article class="ritual-card reveal" data-cat="cristales">
+      <div class="ritual-img ritual-img--luna">
+        <div class="ritual-img-overlay"></div>
+        <span class="ritual-cat-badge">Luna llena</span>
+        <div class="ritual-visual">🌕</div>
+        <div class="ritual-steps-preview">
+          <span>Guía completa</span>
+        </div>
+      </div>
+      <div class="ritual-body">
+        <div class="ritual-meta">
+          <span class="ritual-time">⏱ 1 noche</span>
+          <span class="ritual-level">Especial</span>
+        </div>
+        <h3 class="ritual-title">Ritual de luna llena: soltar y agradecer</h3>
+        <p class="ritual-desc">La luna llena es el momento ideal para cerrar ciclos, liberar lo que ya no te sirve y cargar tus cristales con la energía más poderosa del mes.</p>
+        <div class="ritual-steps" id="steps-5" style="display:none">
+          <div class="ritual-step">
+            <span class="step-num">01</span>
+            <div>
+              <strong>Ubicá tus cristales bajo la luna</strong>
+              <p>Poné tus cuarzos y piedras en el alféizar o en el jardín donde reciban la luz lunar directa toda la noche.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">02</span>
+            <div>
+              <strong>Escribí lo que querés soltar</strong>
+              <p>En un papel, escribí todo lo que ya no quieras cargar: miedos, resentimientos, hábitos. Sé honesta.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">03</span>
+            <div>
+              <strong>Quemá el papel (con cuidado)</strong>
+              <p>Encendé el papel con una vela y dejalo quemarse en un recipiente seguro. El fuego transforma, no destruye.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">04</span>
+            <div>
+              <strong>Agradecé en voz alta</strong>
+              <p>Nombrá 3 cosas por las que estás agradecida. Terminar en gratitud sella el ritual.</p>
+            </div>
+          </div>
+        </div>
+        <button class="ritual-toggle" onclick="toggleSteps(5, this)">
+          Ver la guía completa
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="ritual-product-link">
+          <span>Productos ideales:</span>
+          <span class="ritual-product-name">Cuarzo + Vela + Sahumerio</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Artículo 6 — Difusor -->
+    <article class="ritual-card reveal" data-cat="velas">
+      <div class="ritual-img ritual-img--difusor">
+        <div class="ritual-img-overlay"></div>
+        <span class="ritual-cat-badge">Aromaterapia</span>
+        <div class="ritual-visual">🚗</div>
+        <div class="ritual-steps-preview">
+          <span>Tips</span>
+        </div>
+      </div>
+      <div class="ritual-body">
+        <div class="ritual-meta">
+          <span class="ritual-time">⏱ 5 min</span>
+          <span class="ritual-level">Diario</span>
+        </div>
+        <h3 class="ritual-title">Tu auto como espacio sagrado</h3>
+        <p class="ritual-desc">Pasamos horas arriba del auto. El difusor transforma ese espacio en un micro-ritual de bienestar entre punto A y punto B.</p>
+        <div class="ritual-steps" id="steps-6" style="display:none">
+          <div class="ritual-step">
+            <span class="step-num">01</span>
+            <div>
+              <strong>Elegí el aroma según el momento</strong>
+              <p>Para la mañana: cítricos o menta (energía). Para la noche: lavanda o vainilla (calma).</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">02</span>
+            <div>
+              <strong>Colocá el difusor en la ventilación</strong>
+              <p>No en el espejo retrovisor donde distraiga. El flujo de aire distribuye el aroma de forma uniforme.</p>
+            </div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-num">03</span>
+            <div>
+              <strong>Respirá conscientemente al arrancar</strong>
+              <p>Antes de salir, 3 respiraciones profundas. Sentí el aroma. Eso ya es un ritual.</p>
+            </div>
+          </div>
+        </div>
+        <button class="ritual-toggle" onclick="toggleSteps(6, this)">
+          Ver los tips
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="ritual-product-link">
+          <span>Producto ideal:</span>
+          <span class="ritual-product-name">Difusor para Auto</span>
+        </div>
+      </div>
+    </article>
+
+  </div><!-- end rituales-grid -->
+
+  <!-- CTA -->
+  <div class="rituales-cta reveal">
+    <p class="rituales-cta-text">¿Tenés una pregunta sobre cómo usar tus productos?</p>
+    <a href="https://wa.me/542915753158" target="_blank" class="rituales-cta-btn">
+      Consultanos por WhatsApp
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section" id="contacto">
+  <div class="nl-tag">Comunidad</div>
+  <h2 class="nl-title">Sumate a la <em>energía</em></h2>
+  <p class="nl-sub">Recibí rituales, tips y novedades directamente en tu bandeja.</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="tu@email.com" id="nlEmail"/>
+    <button class="nl-submit" onclick="subscribeNewsletter()">Suscribirme</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">Auralia<span>·</span>bb</div>
+      <p class="footer-brand-desc">Emprendimiento holístico de Bahía Blanca. Sahumerios, velas, cristales y mucho más para tu bienestar.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/auralia.bb/" target="_blank" class="social-pill">Instagram</a>
+        <a href="https://wa.me/542915753158" target="_blank" class="social-pill">WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Tienda</div>
+      <ul class="footer-links">
+        <li><a href="#">Sahumerios</a></li>
+        <li><a href="#">Velas</a></li>
+        <li><a href="#">Cristales</a></li>
+        <li><a href="#">Kits & Sets</a></li>
+        <li><a href="#">Bombitas</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Información</div>
+      <ul class="footer-links">
+        <li><a href="#">Sobre nosotras</a></li>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Cambios</a></li>
+        <li><a href="#">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/auralia.bb/" target="_blank">@auralia.bb</a></li>
+        <li><a href="https://wa.me/542915753158" target="_blank">WhatsApp</a></li>
+        <li><a href="#">Bahía Blanca, BA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>Auralia.bb</span> — Todos los derechos reservados</div>
+    <div class="footer-location">📍 Bahía Blanca, Buenos Aires, Argentina</div>
+  </div>
+</footer>
+
+<!-- NODA Credit -->
+<div class="noda-credit">
+  <span class="noda-credit-text">Diseño & desarrollo</span>
+  <a href="https://www.instagram.com/noda.web" target="_blank" class="noda-credit-brand">
+    <span class="noda-dot">◆</span>
+    NODA
+  </a>
+</div>
+
+<!-- Cart Drawer -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <span class="cart-title">Tu carrito</span>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛒</div>
+      <div class="cart-empty-text">Tu carrito está vacío</div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-val" id="cartSubtotal">$0</span>
+    </div>
+    <p class="cart-shipping-note">Envío gratis en compras mayores a <span>$15.000</span></p>
+    <button class="cart-checkout-btn" onclick="checkout()">Finalizar compra →</button>
+    <button class="cart-continue" onclick="closeCart()">Seguir comprando</button>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="login-modal" id="loginModal">
+  <button class="modal-close" onclick="closeLogin()">✕</button>
+  <div class="modal-logo">Auralia·bb</div>
+  <div class="modal-sub">Iniciá sesión para ver tus pedidos y más.</div>
+  <button class="google-btn" onclick="googleLogin()">
+    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.26 9.77a7.07 7.07 0 0 1 6.74-4.83c1.7 0 3.23.6 4.43 1.6l3.3-3.3A11.94 11.94 0 0 0 12 0C7.08 0 2.87 2.87.96 7.07l4.3 2.7z"/><path fill="#34A853" d="M16.16 17.6A7.07 7.07 0 0 1 12 19.06c-2.87 0-5.32-1.71-6.54-4.2L1.09 17.6C3.09 21.44 7.2 24 12 24c2.96 0 5.72-1.04 7.81-2.76l-3.65-3.64z"/><path fill="#4A90D9" d="M19.81 21.24A11.94 11.94 0 0 0 24 12c0-.7-.07-1.38-.19-2.04H12v4.56h6.72a5.73 5.73 0 0 1-2.56 3.72l3.65 3.64-.14-.04z"/><path fill="#FBBC05" d="M5.46 14.86A7.1 7.1 0 0 1 4.94 12c0-.99.18-1.95.52-2.83L1.09 6.39A11.94 11.94 0 0 0 0 12c0 1.92.45 3.74 1.26 5.36l4.2-2.5z"/></svg>
+    Continuar con Google
+  </button>
+  <div class="modal-divider">o</div>
+  <div class="field">
+    <label>Email</label>
+    <input type="email" id="loginEmail" placeholder="hola@ejemplo.com"/>
+  </div>
+  <div class="field">
+    <label>Contraseña</label>
+    <input type="password" id="loginPass" placeholder="••••••••"/>
+  </div>
+  <button class="modal-btn" onclick="doLogin()">Ingresar</button>
+  <div class="modal-footer">¿No tenés cuenta? <a href="#" onclick="doLogin()">Registrarte</a></div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon" id="toastIcon">✨</span>
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+// ---- DATA ----
+const products = [
+  { id:1, name:'Sahumerio Palo Santo', cat:'sahumerios', price:2800, desc:'Purificá tu espacio con el aroma del palo santo sagrado.', icon:'🪄', bg:'#ede4d8', badge:'nuevo' },
+  { id:2, name:'Sahumerio de Lavanda', cat:'sahumerios', price:2400, desc:'Relax y calma para el final del día.', icon:'💜', bg:'#e8e0f0', badge:'' },
+  { id:3, name:'Cono Sahumador', cat:'sahumerios', price:3200, desc:'Sahumador artesanal de cerámica con diseño floral.', icon:'🏺', bg:'#f0e8d8', badge:'' },
+  { id:4, name:'Vela de Soja Natural', cat:'velas', price:3800, desc:'Vela artesanal de soja 100% natural con fragancia a vainilla.', icon:'🕯️', bg:'#f5f0e8', badge:'nuevo' },
+  { id:5, name:'Vela de Cera de Abeja', cat:'velas', price:4200, desc:'Purifica el aire y crea una atmósfera de bienestar.', icon:'🌟', bg:'#f0ead8', badge:'' },
+  { id:6, name:'Cuarzo Rosa', cat:'cristales', price:1800, desc:'Piedra del amor incondicional y la sanación emocional.', icon:'💎', bg:'#f5e0e8', badge:'' },
+  { id:7, name:'Amatista Cruda', cat:'cristales', price:2200, desc:'Protección espiritual y apertura de la intuición.', icon:'🔮', bg:'#ece0f5', badge:'promo', oldPrice:2800 },
+  { id:8, name:'Bombita de Baño Rosa', cat:'bombitas', price:1500, desc:'Ritual de baño con sales, aceites y flores.', icon:'🌸', bg:'#fce8f0', badge:'nuevo' },
+  { id:9, name:'Difusor para Auto', cat:'difusores', price:2000, desc:'Aromaterapia en movimiento. Para llevar tu energía a todos lados.', icon:'🚗', bg:'#e8f0f5', badge:'' },
+  { id:10, name:'Kit Ritual Completo', cat:'kits', price:9800, desc:'Sahumerio + vela + cuarzo + guía de rituales.', icon:'🎁', bg:'#f0ede8', badge:'nuevo', oldPrice:12000 },
+  { id:11, name:'Kit Iniciación Holística', cat:'kits', price:7500, desc:'Para quienes empiezan su camino espiritual.', icon:'✨', bg:'#e8f0e8', badge:'' },
+];
+
+let cart = [];
+let loggedIn = false;
+
+// ---- RENDER PRODUCTS ----
+function renderProducts(filter = 'todos') {
+  const grid = document.getElementById('productsGrid');
+  const filtered = filter === 'todos' ? products : products.filter(p => p.cat === filter);
+
+  grid.innerHTML = filtered.map((p, i) => `
+    <div class="product-card reveal" style="animation-delay:${i * 0.06}s" id="prod-${p.id}">
+      <div class="product-img" style="background:${p.bg}">
+        ${p.badge ? `<div class="product-badge badge-${p.badge}">${p.badge === 'promo' ? 'Promo' : 'Nuevo'}</div>` : ''}
+        <span class="product-emoji">${p.icon}</span>
+        <div class="product-quick">
+          <button class="quick-add ${cart.find(c=>c.id===p.id)?'added':''}" onclick="addToCart(${p.id}, event)">
+            ${cart.find(c=>c.id===p.id) ? '✓ Agregado' : '+ Agregar al carrito'}
+          </button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">
+            $${p.price.toLocaleString('es-AR')}
+            ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString('es-AR')}</span>` : ''}
+          </div>
+          <button class="add-cart-btn ${cart.find(c=>c.id===p.id)?'in-cart':''}" onclick="addToCart(${p.id}, event)">
+            ${cart.find(c=>c.id===p.id) ? '✓' : '+'}
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // trigger reveal
+  setTimeout(() => {
+    grid.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }, 50);
+}
+
+// ---- FILTER ----
+function filterProducts(cat, catCard, pillBtn) {
+  // Update category cards
+  if (catCard) {
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+    catCard.classList.add('active');
+  }
+  // Update pills
+  if (pillBtn) {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pillBtn.classList.add('active');
+  }
+  renderProducts(cat);
+}
+
+// ---- CART ----
+function addToCart(id, e) {
+  if (e) e.stopPropagation();
+  const p = products.find(p => p.id === id);
+  const existing = cart.find(c => c.id === id);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ ...p, qty: 1 });
+  }
+  updateCartUI();
+  renderCartBody();
+  renderProducts(getActiveFilter());
+  showToast(`${p.icon} ${p.name} agregado`, '✨');
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  updateCartUI();
+  renderCartBody();
+  renderProducts(getActiveFilter());
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) { removeFromCart(id); return; }
+  updateCartUI();
+  renderCartBody();
+}
+
+function getActiveFilter() {
+  const active = document.querySelector('.filter-pill.active');
+  if (!active) return 'todos';
+  return active.textContent.trim().toLowerCase() === 'todos' ? 'todos' 
+    : active.textContent.trim().toLowerCase();
+}
+
+function updateCartUI() {
+  const total = cart.reduce((s, c) => s + c.qty, 0);
+  document.getElementById('cartCount').textContent = total;
+  const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  document.getElementById('cartSubtotal').textContent = '$' + subtotal.toLocaleString('es-AR');
+}
+
+function renderCartBody() {
+  const body = document.getElementById('cartBody');
+  if (!cart.length) {
+    body.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛒</div><div class="cart-empty-text">Tu carrito está vacío</div></div>`;
+    return;
+  }
+  body.innerHTML = cart.map(c => `
+    <div class="cart-item">
+      <div class="cart-item-thumb">${c.icon}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-cat">${c.cat}</div>
+        <div class="cart-item-name">${c.name}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${c.id}, -1)">−</button>
+          <span class="qty-num">${c.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${c.id}, 1)">+</button>
+        </div>
+        <button class="remove-btn" onclick="removeFromCart(${c.id})">Eliminar</button>
+      </div>
+      <div class="cart-item-price">$${(c.price * c.qty).toLocaleString('es-AR')}</div>
+    </div>
+  `).join('');
+}
+
+function openCart()  { document.getElementById('cartDrawer').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+function closeCart() { document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+
+function checkout() {
+  if (!cart.length) { showToast('Tu carrito está vacío', '⚠️'); return; }
+  showToast('Redirigiendo a MercadoPago...', '🛒');
+  closeCart();
+}
+
+// ---- AUTH ----
+function openLogin()  { document.getElementById('loginModal').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+function closeLogin() { document.getElementById('loginModal').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+function closeAll()   { closeCart(); closeLogin(); }
+
+function doLogin() {
+  const email = document.getElementById('loginEmail').value || 'amiga@auralia.com';
+  setLoggedIn(email);
+  closeLogin();
+}
+
+function googleLogin() {
+  setLoggedIn('usuaria@gmail.com');
+  closeLogin();
+}
+
+function setLoggedIn(email) {
+  loggedIn = true;
+  const name = email.split('@')[0];
+  document.getElementById('loginNavBtn').style.display = 'none';
+  document.getElementById('userChip').classList.add('visible');
+  document.getElementById('userAvatar').textContent = name[0].toUpperCase();
+  document.getElementById('userNameNav').textContent = name;
+  showToast('Bienvenida de vuelta 🌸', '✨');
+}
+
+// ---- NEWSLETTER ----
+function subscribeNewsletter() {
+  const email = document.getElementById('nlEmail').value;
+  if (!email) { showToast('Ingresá tu email primero', '⚠️'); return; }
+  document.getElementById('nlEmail').value = '';
+  showToast('Suscripta exitosamente 🌿', '💛');
+}
+
+// ---- TOAST ----
+function showToast(msg, icon = '✨') {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  document.getElementById('toastIcon').textContent = icon;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ---- MOBILE MENU ----
+let mobileMenuOpen = false;
+function toggleMobileMenu() {
+  mobileMenuOpen = !mobileMenuOpen;
+  document.getElementById('mobileMenu').classList.toggle('open', mobileMenuOpen);
+  document.getElementById('hamburger').classList.toggle('open', mobileMenuOpen);
+}
+function closeMobileMenu() {
+  mobileMenuOpen = false;
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ---- CURSOR (desktop only) ----
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+if (!isTouchDevice) {
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      cursorRing.style.left = e.clientX + 'px';
+      cursorRing.style.top = e.clientY + 'px';
+    }, 60);
+  });
+  document.addEventListener('mousedown', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(0.6)';
+    cursorRing.style.transform = 'translate(-50%,-50%) scale(0.8)';
+  });
+  document.addEventListener('mouseup', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    cursorRing.style.transform = 'translate(-50%,-50%) scale(1)';
+  });
+} else {
+  cursor.style.display = 'none';
+  cursorRing.style.display = 'none';
+  document.body.style.cursor = 'auto';
+  document.querySelectorAll('button, a').forEach(el => el.style.cursor = 'pointer');
+}
+
+// ---- SCROLL REVEAL ----
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) el.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ---- INIT ----
+renderProducts();
+</script>
