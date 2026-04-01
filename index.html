@@ -11,6 +11,8 @@
 <body>
 
 <!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- Nav -->
 <nav id="navbar">
@@ -100,10 +102,7 @@
     <!-- Badge -->
     <div class="hero-badge">
       <div class="hero-badge-label">Envíos a todo el país</div>
-      <div class="hero-badge-val">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v8H3z"/><path d="M14 11h4l3 3v1h-7z"/><path d="M7.5 18.5a1.5 1.5 0 1 0 0 .01"/><path d="M17.5 18.5a1.5 1.5 0 1 0 0 .01"/></svg>
-        <span>Argentina</span>
-      </div>
+      <div class="hero-badge-val">🚚 Argentina</div>
     </div>
   </div>
 </section>
@@ -136,35 +135,35 @@
   <div class="categories-grid reveal">
     <div class="cat-card active" onclick="filterProducts('todos', this)">
       <div class="cat-card-inner">
-        <span class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 3c-6.5.4-11 4.9-11 10.2A4.8 4.8 0 0 0 11.8 18C17 18 21.6 13.5 22 7c.1-1.5 0-2.8-.2-4Z"/><path d="M8 14c2-2 4.4-3.7 8-5"/></svg></span>
+        <span class="cat-icon">🌿</span>
         <span class="cat-card-name">Todos</span>
         <span class="cat-card-count">ver todo</span>
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('sahumerios', this)">
       <div class="cat-card-inner">
-        <span class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21h10"/><path d="M10 18h4"/><path d="M9 13c0-1.3 1.5-2 1.5-3.5S9 7.3 9 6"/><path d="M15 13c0-1.3 1.5-2 1.5-3.5S15 7.3 15 6"/></svg></span>
+        <span class="cat-icon">🪄</span>
         <span class="cat-card-name">Sahumerios</span>
         <span class="cat-card-count">3 productos</span>
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('velas', this)">
       <div class="cat-card-inner">
-        <span class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 10h6v10H9z"/><path d="M12 3c1.2 1 2 2.2 2 3.5A2 2 0 0 1 12 8.5a2 2 0 0 1-2-2C10 5.2 10.8 4 12 3Z"/><path d="M8 20h8"/></svg></span>
+        <span class="cat-icon">🕯️</span>
         <span class="cat-card-name">Velas</span>
         <span class="cat-card-count">2 productos</span>
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('cristales', this)">
       <div class="cat-card-inner">
-        <span class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 10l7 11 7-11-7-7Z"/><path d="M12 3v18"/><path d="M5 10h14"/></svg></span>
+        <span class="cat-icon">💎</span>
         <span class="cat-card-name">Cristales</span>
         <span class="cat-card-count">2 productos</span>
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('kits', this)">
       <div class="cat-card-inner">
-        <span class="cat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 1 1 0-5C10.5 2 12 7 12 7Z"/><path d="M12 7h4.5a2.5 2.5 0 1 0 0-5C13.5 2 12 7 12 7Z"/></svg></span>
+        <span class="cat-icon">🎁</span>
         <span class="cat-card-name">Kits</span>
         <span class="cat-card-count">2 productos</span>
       </div>
@@ -207,22 +206,22 @@
     </p>
     <div class="about-pillars">
       <div class="pillar-item">
-        <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 3c-6.5.4-11 4.9-11 10.2A4.8 4.8 0 0 0 11.8 18C17 18 21.6 13.5 22 7c.1-1.5 0-2.8-.2-4Z"/><path d="M8 14c2-2 4.4-3.7 8-5"/></svg></span>
+        <span class="pillar-icon">🌿</span>
         <div class="pillar-line"></div>
         <span class="pillar-name">Natural</span>
       </div>
       <div class="pillar-item">
-        <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></span>
+        <span class="pillar-icon">✨</span>
         <div class="pillar-line"></div>
         <span class="pillar-name">Energía</span>
       </div>
       <div class="pillar-item">
-        <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21a8 8 0 0 1-8-8c0-4.4 3.6-8 8-8"/><path d="M12 5a8 8 0 0 1 8 8c0 4.4-3.6 8-8 8"/><path d="M8 13h8"/></svg></span>
+        <span class="pillar-icon">🕊️</span>
         <div class="pillar-line"></div>
         <span class="pillar-name">Bienestar</span>
       </div>
       <div class="pillar-item">
-        <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-6.5-4.3-8.3-7.4C2 9.7 3.4 6.5 6.7 6.2c2-.2 3.4.8 4.3 2 1-1.2 2.4-2.2 4.4-2 3.2.3 4.6 3.5 3 6.4C18.5 15.7 12 20 12 20Z"/></svg></span>
+        <span class="pillar-icon">💛</span>
         <div class="pillar-line"></div>
         <span class="pillar-name">Con amor</span>
       </div>
@@ -269,28 +268,28 @@
 <!-- Shipping strip -->
 <div class="shipping-strip">
   <div class="strip-item">
-    <span class="strip-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h11v8H3z"/><path d="M14 11h4l3 3v1h-7z"/><path d="M7.5 18.5a1.5 1.5 0 1 0 0 .01"/><path d="M17.5 18.5a1.5 1.5 0 1 0 0 .01"/></svg></span>
+    <span class="strip-icon">🚚</span>
     <div>
       <div class="strip-text-head">Envíos a todo el país</div>
       <div class="strip-text-sub">Argentina y más</div>
     </div>
   </div>
   <div class="strip-item">
-    <span class="strip-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 1 1 0-5C10.5 2 12 7 12 7Z"/><path d="M12 7h4.5a2.5 2.5 0 1 0 0-5C13.5 2 12 7 12 7Z"/></svg></span>
+    <span class="strip-icon">🎁</span>
     <div>
       <div class="strip-text-head">Packaging especial</div>
       <div class="strip-text-sub">Cada pedido con amor</div>
     </div>
   </div>
   <div class="strip-item">
-    <span class="strip-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18 3 21V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H7Z"/><path d="M8 10h8"/><path d="M8 14h5"/></svg></span>
+    <span class="strip-icon">💬</span>
     <div>
       <div class="strip-text-head">Atención personalizada</div>
       <div class="strip-text-sub">Por Instagram y WhatsApp</div>
     </div>
   </div>
   <div class="strip-item">
-    <span class="strip-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/><path d="M5 14l.7 1.8L7.5 16.5l-1.8.7L5 19l-.7-1.8L2.5 16.5l1.8-.7L5 14Z"/></svg></span>
+    <span class="strip-icon">✨</span>
     <div>
       <div class="strip-text-head">Productos naturales</div>
       <div class="strip-text-sub">Seleccionados con intención</div>
@@ -321,7 +320,7 @@
       <div class="ritual-img ritual-img--sahumero">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Sahumerios</span>
-        <div class="ritual-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21h10"/><path d="M10 18h4"/><path d="M9 13c0-1.3 1.5-2 1.5-3.5S9 7.3 9 6"/><path d="M15 13c0-1.3 1.5-2 1.5-3.5S15 7.3 15 6"/></svg></div>
+        <div class="ritual-visual">🪄</div>
         <div class="ritual-steps-preview">
           <span>4 pasos</span>
         </div>
@@ -379,7 +378,7 @@
       <div class="ritual-img ritual-img--cristal">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Cristales</span>
-        <div class="ritual-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 10l7 11 7-11-7-7Z"/><path d="M12 3v18"/><path d="M5 10h14"/></svg></div>
+        <div class="ritual-visual">💎</div>
         <div class="ritual-steps-preview">
           <span>5 pasos</span>
         </div>
@@ -444,7 +443,7 @@
       <div class="ritual-img ritual-img--vela">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Velas</span>
-        <div class="ritual-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 10h6v10H9z"/><path d="M12 3c1.2 1 2 2.2 2 3.5A2 2 0 0 1 12 8.5a2 2 0 0 1-2-2C10 5.2 10.8 4 12 3Z"/><path d="M8 20h8"/></svg></div>
+        <div class="ritual-visual">🕯️</div>
         <div class="ritual-steps-preview">
           <span>3 pasos</span>
         </div>
@@ -495,7 +494,7 @@
       <div class="ritual-img ritual-img--bomba">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Baño ritual</span>
-        <div class="ritual-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11Z"/><path d="M9 15a3 3 0 0 0 6 0"/></svg></div>
+        <div class="ritual-visual">🌸</div>
         <div class="ritual-steps-preview">
           <span>4 pasos</span>
         </div>
@@ -553,7 +552,7 @@
       <div class="ritual-img ritual-img--luna">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Luna llena</span>
-        <div class="ritual-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a8 8 0 1 0 9.5 9.5Z"/><path d="M16.5 4.5v2"/><path d="M21 9h-2"/></svg></div>
+        <div class="ritual-visual">🌕</div>
         <div class="ritual-steps-preview">
           <span>Guía completa</span>
         </div>
@@ -611,7 +610,7 @@
       <div class="ritual-img ritual-img--difusor">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Aromaterapia</span>
-        <div class="ritual-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 15h14"/><path d="M7 15l1.5-4h7L17 15"/><path d="M6 15v3"/><path d="M18 15v3"/><path d="M8 18.5a1.5 1.5 0 1 0 0 .01"/><path d="M16 18.5a1.5 1.5 0 1 0 0 .01"/></svg></div>
+        <div class="ritual-visual">🚗</div>
         <div class="ritual-steps-preview">
           <span>Tips</span>
         </div>
@@ -777,7 +776,7 @@
     <input type="password" id="loginPass" placeholder="••••••••"/>
   </div>
   <button class="modal-btn" onclick="doLogin()">Ingresar</button>
-  <div class="modal-footer">¿No tenés cuenta? <a href="#" onclick="doLogin()">Registrarte</a></div>
+  <div class="modal-footer">¿No tenés cuenta? <a href="#" onclick="doRegister()">Registrarte gratis</a></div>
 </div>
 
 <!-- Overlay -->
@@ -792,17 +791,17 @@
 <script>
 // ---- DATA ----
 const products = [
-  { id:1, name:'Sahumerio Palo Santo', cat:'sahumerios', price:2800, desc:'Purificá tu espacio con el aroma del palo santo sagrado.', icon:'🪄', image:'sahumerios/aromanza-palo-santo-buena-onda.webp', imagePosition:'center 78%', bg:'#ede4d8', badge:'nuevo' },
-  { id:2, name:'Sahumerio de Lavanda', cat:'sahumerios', price:2400, desc:'Relax y calma para el final del día.', icon:'💜', image:'sahumerios/garden-fresh.webp', imagePosition:'center 72%', bg:'#e8e0f0', badge:'' },
-  { id:3, name:'Cono Sahumador', cat:'sahumerios', price:3200, desc:'Sahumador artesanal de cerámica con diseño floral.', icon:'🏺', image:'sahumador/sahumador-ceramica.webp', imagePosition:'center 58%', bg:'#f0e8d8', badge:'' },
-  { id:4, name:'Vela de Soja Natural', cat:'velas', price:3800, desc:'Vela artesanal de soja 100% natural con fragancia a vainilla.', icon:'🕯️', image:'velas/iluminarte-vela-de-soja-aromatica-4cm.webp', imagePosition:'center 42%', bg:'#f5f0e8', badge:'nuevo' },
-  { id:5, name:'Vela de Cera de Abeja', cat:'velas', price:4200, desc:'Purifica el aire y crea una atmósfera de bienestar.', icon:'🌟', image:'velas/vela-aromatica-5.5cm.webp', imagePosition:'center 44%', bg:'#f0ead8', badge:'' },
-  { id:6, name:'Cuarzo Rosa', cat:'cristales', price:1800, desc:'Piedra del amor incondicional y la sanación emocional.', icon:'💎', image:'cuarzo/cuarzo-rosa.webp', imagePosition:'center 73%', bg:'#f5e0e8', badge:'' },
-  { id:7, name:'Amatista Cruda', cat:'cristales', price:2200, desc:'Protección espiritual y apertura de la intuición.', icon:'🔮', image:'cuarzo/cuarzo-amatista-en-bruto.webp', imagePosition:'center 70%', bg:'#ece0f5', badge:'promo', oldPrice:2800 },
-  { id:8, name:'Bombita de Baño Rosa', cat:'bombitas', price:1500, desc:'Ritual de baño con sales, aceites y flores.', icon:'🌸', image:'bombitas/aromanza-bombitas-sahumadoras.webp', imagePosition:'center 64%', bg:'#fce8f0', badge:'nuevo' },
-  { id:9, name:'Difusor para Auto', cat:'difusores', price:2000, desc:'Aromaterapia en movimiento. Para llevar tu energía a todos lados.', icon:'🚗', image:'difusor-auto/aromanza-difusar-para-auto.webp', imagePosition:'center 54%', bg:'#e8f0f5', badge:'' },
-  { id:10, name:'Kit Ritual Completo', cat:'kits', price:9800, desc:'Sahumerio + vela + cuarzo + guía de rituales.', icon:'🎁', image:'bombitas/caja-bombitas-defumacion-x8-7-elementos-puros.webp', imagePosition:'center 62%', bg:'#f0ede8', badge:'nuevo', oldPrice:12000 },
-  { id:11, name:'Kit Iniciación Holística', cat:'kits', price:7500, desc:'Para quienes empiezan su camino espiritual.', icon:'✨', image:'sahumerios/sagrada-madre-elementos.webp', imagePosition:'center 62%', bg:'#e8f0e8', badge:'' },
+  { id:1, name:'Sahumerio Palo Santo', cat:'sahumerios', price:2800, desc:'Purificá tu espacio con el aroma del palo santo sagrado.', icon:'🪄', bg:'#ede4d8', badge:'nuevo' },
+  { id:2, name:'Sahumerio de Lavanda', cat:'sahumerios', price:2400, desc:'Relax y calma para el final del día.', icon:'💜', bg:'#e8e0f0', badge:'' },
+  { id:3, name:'Cono Sahumador', cat:'sahumerios', price:3200, desc:'Sahumador artesanal de cerámica con diseño floral.', icon:'🏺', bg:'#f0e8d8', badge:'' },
+  { id:4, name:'Vela de Soja Natural', cat:'velas', price:3800, desc:'Vela artesanal de soja 100% natural con fragancia a vainilla.', icon:'🕯️', bg:'#f5f0e8', badge:'nuevo' },
+  { id:5, name:'Vela de Cera de Abeja', cat:'velas', price:4200, desc:'Purifica el aire y crea una atmósfera de bienestar.', icon:'🌟', bg:'#f0ead8', badge:'' },
+  { id:6, name:'Cuarzo Rosa', cat:'cristales', price:1800, desc:'Piedra del amor incondicional y la sanación emocional.', icon:'💎', bg:'#f5e0e8', badge:'' },
+  { id:7, name:'Amatista Cruda', cat:'cristales', price:2200, desc:'Protección espiritual y apertura de la intuición.', icon:'🔮', bg:'#ece0f5', badge:'promo', oldPrice:2800 },
+  { id:8, name:'Bombita de Baño Rosa', cat:'bombitas', price:1500, desc:'Ritual de baño con sales, aceites y flores.', icon:'🌸', bg:'#fce8f0', badge:'nuevo' },
+  { id:9, name:'Difusor para Auto', cat:'difusores', price:2000, desc:'Aromaterapia en movimiento. Para llevar tu energía a todos lados.', icon:'🚗', bg:'#e8f0f5', badge:'' },
+  { id:10, name:'Kit Ritual Completo', cat:'kits', price:9800, desc:'Sahumerio + vela + cuarzo + guía de rituales.', icon:'🎁', bg:'#f0ede8', badge:'nuevo', oldPrice:12000 },
+  { id:11, name:'Kit Iniciación Holística', cat:'kits', price:7500, desc:'Para quienes empiezan su camino espiritual.', icon:'✨', bg:'#e8f0e8', badge:'' },
 ];
 
 let cart = [];
@@ -817,8 +816,7 @@ function renderProducts(filter = 'todos') {
     <div class="product-card reveal" style="animation-delay:${i * 0.06}s" id="prod-${p.id}">
       <div class="product-img" style="background:${p.bg}">
         ${p.badge ? `<div class="product-badge badge-${p.badge}">${p.badge === 'promo' ? 'Promo' : 'Nuevo'}</div>` : ''}
-        ${p.image ? `<img class="product-photo" src="${p.image}" alt="${p.name}" style="object-position:${p.imagePosition || 'center center'};" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ''}
-        <span class="product-emoji ${p.image ? 'fallback-emoji' : ''}">${p.icon}</span>
+        <span class="product-emoji">${p.icon}</span>
         <div class="product-quick">
           <button class="quick-add ${cart.find(c=>c.id===p.id)?'added':''}" onclick="addToCart(${p.id}, event)">
             ${cart.find(c=>c.id===p.id) ? '✓ Agregado' : '+ Agregar al carrito'}
@@ -953,14 +951,9 @@ function doLogin() {
   closeLogin();
 }
 
-async function googleLogin() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-  });
-
-  if (error) {
-    console.error("Error login:", error);
-  }
+function googleLogin() {
+  setLoggedIn('usuaria@gmail.com');
+  closeLogin();
 }
 
 function setLoggedIn(email) {
@@ -1043,19 +1036,9 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // ---- INIT ----
 renderProducts();
-
-supabase.auth.onAuthStateChange((event, session) => {
-  if (session?.user) {
-    const user = session.user;
-
-    const email = user.email;
-    setLoggedIn(email);
-  }
-});
-
-
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<!-- Supabase SDK — debe ir ANTES de main.js -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
