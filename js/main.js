@@ -232,17 +232,39 @@ function checkout() {
 // ============================================================
 // AUTH — Supabase real
 // ============================================================
-function openLogin() {
+function openLogin(tab = 'login') {
   document.getElementById('loginModal').classList.add('open');
   document.getElementById('overlay').classList.add('open');
   const err = document.getElementById('authError');
   if (err) err.style.display = 'none';
+  switchTab(tab);
 }
 function closeLogin() {
   document.getElementById('loginModal').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
+  // Limpiar campos
+  ['loginEmail','loginPass','loginPassConfirm','registerName'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  const err = document.getElementById('authError');
+  if (err) err.style.display = 'none';
 }
 function closeAll() { closeCart(); closeLogin(); }
+
+function switchTab(tab) {
+  const isLogin = tab === 'login';
+  document.getElementById('tabLogin').classList.toggle('active', isLogin);
+  document.getElementById('tabRegister').classList.toggle('active', !isLogin);
+  document.getElementById('fieldName').style.display        = isLogin ? 'none' : '';
+  document.getElementById('fieldPassConfirm').style.display = isLogin ? 'none' : '';
+  document.getElementById('authMainBtn').textContent        = isLogin ? 'Ingresar' : 'Crear cuenta';
+  document.getElementById('authMainBtn').onclick            = isLogin ? doLogin : doRegister;
+  document.getElementById('authFooter').innerHTML           = isLogin
+    ? '¿No tenés cuenta? <a href="#" onclick="switchTab(\'register\')">Registrarte gratis</a>'
+    : '¿Ya tenés cuenta? <a href="#" onclick="switchTab(\'login\')">Ingresar</a>';
+  const err = document.getElementById('authError');
+  if (err) err.style.display = 'none';
+}
 
 async function googleLogin() {
   const btn = document.querySelector('.google-btn');
@@ -282,14 +304,23 @@ async function doLogin() {
 }
 
 async function doRegister() {
-  const email = document.getElementById('loginEmail').value.trim();
-  const pass  = document.getElementById('loginPass').value;
-  const btn   = document.querySelector('.modal-btn');
-  if (!email || !pass) { showAuthError('Completá email y contraseña'); return; }
-  if (pass.length < 6)  { showAuthError('La contraseña debe tener al menos 6 caracteres'); return; }
-  btn.textContent = 'Registrando...'; btn.disabled = true;
+  const name    = (document.getElementById('registerName')?.value || '').trim();
+  const email   = document.getElementById('loginEmail').value.trim();
+  const pass    = document.getElementById('loginPass').value;
+  const confirm = document.getElementById('loginPassConfirm')?.value;
+  const btn     = document.getElementById('authMainBtn');
+
+  if (!email || !pass)        { showAuthError('Completá email y contraseña'); return; }
+  if (pass.length < 6)        { showAuthError('La contraseña debe tener al menos 6 caracteres'); return; }
+  if (confirm && pass !== confirm) { showAuthError('Las contraseñas no coinciden'); return; }
+
+  btn.textContent = 'Creando cuenta...'; btn.disabled = true;
   try {
-    const { data, error } = await db.auth.signUp({ email, password: pass });
+    const { data, error } = await db.auth.signUp({
+      email,
+      password: pass,
+      options: { data: { full_name: name || email.split('@')[0] } }
+    });
     if (error) throw error;
     if (data.user && !data.session) {
       closeLogin();
@@ -297,12 +328,15 @@ async function doRegister() {
     } else {
       setLoggedIn(data.user);
       closeLogin();
-      showToast('Cuenta creada exitosamente 🌸', '✨');
+      showToast(`Bienvenida${name ? ', ' + name : ''} 🌸`, '✨');
     }
   } catch (err) {
-    showAuthError(err.message || 'Error al registrarse');
+    const msg = err.message.includes('already registered')
+      ? 'Este email ya tiene una cuenta. Iniciá sesión.'
+      : err.message;
+    showAuthError(msg);
   } finally {
-    btn.textContent = 'Ingresar'; btn.disabled = false;
+    btn.textContent = 'Crear cuenta'; btn.disabled = false;
   }
 }
 

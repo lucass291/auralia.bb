@@ -745,26 +745,48 @@
   </div>
 </div>
 
-<!-- Login Modal -->
+
+<!-- Auth Modal -->
 <div class="login-modal" id="loginModal">
   <button class="modal-close" onclick="closeLogin()">✕</button>
   <div class="modal-logo">Auralia·bb</div>
-  <div class="modal-sub">Iniciá sesión para ver tus pedidos y más.</div>
+
+  <!-- Tabs -->
+  <div class="auth-tabs">
+    <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Ingresar</button>
+    <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">Registrarse</button>
+  </div>
+
+  <!-- Google -->
   <button class="google-btn" onclick="googleLogin()">
     <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.26 9.77a7.07 7.07 0 0 1 6.74-4.83c1.7 0 3.23.6 4.43 1.6l3.3-3.3A11.94 11.94 0 0 0 12 0C7.08 0 2.87 2.87.96 7.07l4.3 2.7z"/><path fill="#34A853" d="M16.16 17.6A7.07 7.07 0 0 1 12 19.06c-2.87 0-5.32-1.71-6.54-4.2L1.09 17.6C3.09 21.44 7.2 24 12 24c2.96 0 5.72-1.04 7.81-2.76l-3.65-3.64z"/><path fill="#4A90D9" d="M19.81 21.24A11.94 11.94 0 0 0 24 12c0-.7-.07-1.38-.19-2.04H12v4.56h6.72a5.73 5.73 0 0 1-2.56 3.72l3.65 3.64-.14-.04z"/><path fill="#FBBC05" d="M5.46 14.86A7.1 7.1 0 0 1 4.94 12c0-.99.18-1.95.52-2.83L1.09 6.39A11.94 11.94 0 0 0 0 12c0 1.92.45 3.74 1.26 5.36l4.2-2.5z"/></svg>
     Continuar con Google
   </button>
   <div class="modal-divider">o</div>
+
+  <!-- Campos comunes -->
+  <div class="field" id="fieldName" style="display:none">
+    <label>Tu nombre</label>
+    <input type="text" id="registerName" placeholder="Valentina"/>
+  </div>
   <div class="field">
     <label>Email</label>
     <input type="email" id="loginEmail" placeholder="hola@ejemplo.com"/>
   </div>
   <div class="field">
     <label>Contraseña</label>
-    <input type="password" id="loginPass" placeholder="••••••••"/>
+    <input type="password" id="loginPass" placeholder="Mínimo 6 caracteres"/>
   </div>
-  <button class="modal-btn" onclick="doLogin()">Ingresar</button>
-  <div class="modal-footer">¿No tenés cuenta? <a href="#" onclick="doRegister()">Registrarte gratis</a></div>
+  <div class="field" id="fieldPassConfirm" style="display:none">
+    <label>Repetir contraseña</label>
+    <input type="password" id="loginPassConfirm" placeholder="Repetí tu contraseña"/>
+  </div>
+
+  <button class="modal-btn" id="authMainBtn" onclick="doLogin()">Ingresar</button>
+
+  <div class="modal-footer" id="authFooter">
+    ¿No tenés cuenta? <a href="#" onclick="switchTab('register')">Registrarte gratis</a>
+  </div>
 </div>
 
 <!-- Overlay -->
