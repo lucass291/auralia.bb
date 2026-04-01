@@ -428,25 +428,6 @@ function closeMobileMenu() {
 }
 
 // ============================================================
-// CURSOR (solo desktop)
-// ============================================================
-const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-const cursor     = document.getElementById('cursor');
-const cursorRing = document.getElementById('cursorRing');
-if (!isTouchDevice) {
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-    setTimeout(() => { cursorRing.style.left = e.clientX + 'px'; cursorRing.style.top = e.clientY + 'px'; }, 60);
-  });
-  document.addEventListener('mousedown', () => { cursor.style.transform = 'translate(-50%,-50%) scale(0.6)'; cursorRing.style.transform = 'translate(-50%,-50%) scale(0.8)'; });
-  document.addEventListener('mouseup',   () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)';   cursorRing.style.transform = 'translate(-50%,-50%) scale(1)'; });
-} else {
-  cursor.style.display = 'none'; cursorRing.style.display = 'none';
-  document.body.style.cursor = 'auto';
-  document.querySelectorAll('button, a').forEach(el => el.style.cursor = 'pointer');
-}
-
-// ============================================================
 // SCROLL REVEAL
 // ============================================================
 const revealObserver = new IntersectionObserver((entries) => {

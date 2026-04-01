@@ -28,38 +28,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ---- CURSOR ---- */
-body, body * { cursor: none !important; }
-.cursor {
-  width: 10px; height: 10px;
-  background: var(--earth);
-  border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease, background 0.2s;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: multiply;
-}
-.cursor-ring {
-  width: 32px; height: 32px;
-  border: 1px solid var(--taupe);
-  border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transition: transform 0.35s ease, width 0.3s, height 0.3s, opacity 0.3s, border-color 0.2s;
-  transform: translate(-50%, -50%);
-}
-/* Agrandar el anillo al pasar por links y botones */
-body:has(a:hover) .cursor-ring,
-body:has(button:hover) .cursor-ring { width: 48px; height: 48px; border-color: var(--earth); }
-
-@media (max-width: 768px) {
-  body, body * { cursor: auto !important; }
-  .cursor, .cursor-ring { display: none !important; }
-}
-
 /* ---- NAV ---- */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
@@ -131,7 +99,7 @@ nav {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--smoke);
-  cursor: none;
+  
   padding: 0;
   transition: color 0.2s;
 }
@@ -140,7 +108,7 @@ nav {
 .cart-btn {
   position: relative;
   background: none; border: none;
-  cursor: none;
+  
   font-size: 20px;
   color: var(--smoke);
   transition: color 0.2s;
@@ -239,7 +207,7 @@ nav {
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border: none; cursor: none;
+  border: none; 
   transition: background 0.25s, transform 0.2s;
   display: inline-flex;
   align-items: center;
@@ -255,7 +223,7 @@ nav {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--smoke);
-  cursor: none;
+  
   padding: 0;
   display: flex;
   align-items: center;
@@ -521,7 +489,7 @@ section { padding: 96px 48px; }
 .cat-card {
   position: relative;
   overflow: hidden;
-  cursor: none;
+  
 }
 
 .cat-card-inner {
@@ -606,7 +574,7 @@ section { padding: 96px 48px; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
-  cursor: none;
+  
   transition: all 0.2s;
 }
 .filter-pill:hover { border-color: var(--taupe); color: var(--smoke); }
@@ -625,7 +593,7 @@ section { padding: 96px 48px; }
 .product-card {
   background: var(--white);
   position: relative;
-  cursor: none;
+  
   transition: transform 0.3s;
 }
 .product-card:hover { transform: translateY(-6px); }
@@ -679,7 +647,7 @@ section { padding: 96px 48px; }
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border: none; cursor: none;
+  border: none; 
   transition: background 0.2s, color 0.2s;
 }
 .quick-add:hover { background: var(--gold); color: white; }
@@ -741,7 +709,7 @@ section { padding: 96px 48px; }
   background: none;
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  cursor: none;
+  
   font-size: 18px;
   transition: all 0.2s;
   color: var(--smoke);
@@ -1003,7 +971,7 @@ section { padding: 96px 48px; }
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  cursor: none;
+  
   transition: background 0.2s;
   white-space: nowrap;
 }
@@ -1176,7 +1144,7 @@ footer {
 }
 
 .cart-close {
-  background: none; border: none; cursor: none;
+  background: none; border: none; 
   font-size: 20px; color: var(--muted);
   transition: color 0.2s;
   line-height: 1;
@@ -1231,7 +1199,7 @@ footer {
 .qty-btn {
   width: 24px; height: 24px;
   border: 1px solid var(--border);
-  background: none; cursor: none;
+  background: none; 
   display: flex; align-items: center; justify-content: center;
   font-size: 14px; color: var(--smoke);
   transition: all 0.15s;
@@ -1248,7 +1216,7 @@ footer {
 }
 
 .remove-btn {
-  background: none; border: none; cursor: none;
+  background: none; border: none; 
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1292,7 +1260,7 @@ footer {
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  border: none; cursor: none;
+  border: none; 
   transition: background 0.25s;
   margin-bottom: 10px;
 }
@@ -1307,7 +1275,7 @@ footer {
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  cursor: none;
+  
   padding: 8px;
   transition: color 0.2s;
 }
@@ -1342,7 +1310,7 @@ footer {
 
 .modal-close {
   position: absolute; top: 16px; right: 20px;
-  background: none; border: none; cursor: none;
+  background: none; border: none; 
   font-size: 18px; color: var(--muted);
   transition: color 0.2s;
 }
@@ -1382,7 +1350,7 @@ footer {
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  border: none; cursor: none;
+  border: none; 
   transition: background 0.25s;
   margin-top: 8px;
 }
@@ -1412,7 +1380,7 @@ footer {
   font-family: var(--sans);
   font-size: 13px;
   color: var(--smoke);
-  cursor: none;
+  
   display: flex; align-items: center; justify-content: center; gap: 10px;
   transition: border-color 0.2s;
 }
@@ -1440,7 +1408,7 @@ footer {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  cursor: none;
+  
   transition: all 0.2s;
   margin-bottom: -1px;
 }
@@ -1455,7 +1423,7 @@ footer {
   display: none;
   align-items: center;
   gap: 8px;
-  cursor: none;
+  
 }
 .user-chip.visible { display: flex; }
 
@@ -1532,7 +1500,7 @@ footer {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
-  cursor: none;
+  
   transition: all 0.2s;
 }
 .rtab:hover { border-color: var(--taupe); color: var(--smoke); }
@@ -1697,7 +1665,7 @@ footer {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--earth);
-  cursor: none;
+  
   padding: 0;
   margin-bottom: 18px;
   transition: color 0.2s;
