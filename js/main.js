@@ -44,11 +44,12 @@ async function loadProducts() {
 
     products = data.map(p => ({
       ...p,
-      cat:      p.categories?.slug || '',
-      icon:     p.emoji || '✨',
-      bg:       p.bg_color || '#ede4d8',
-      desc:     p.description || '',
-      oldPrice: p.old_price || null,
+      cat:       p.categories?.slug || '',
+      icon:      p.emoji || '✨',
+      bg:        p.bg_color || '#ede4d8',
+      desc:      p.description || '',
+      oldPrice:  p.old_price || null,
+      image_url: p.image_url || null,
     }));
   } catch(e) {
     console.warn('Usando productos locales:', e?.message);
@@ -103,7 +104,10 @@ function renderProducts(filter = 'todos') {
     <div class="product-card reveal" style="animation-delay:${i * 0.06}s" id="prod-${p.id}">
       <div class="product-img" style="background:${p.bg || '#ede4d8'}">
         ${p.badge ? `<div class="product-badge badge-${p.badge}">${p.badge === 'promo' ? 'Promo' : 'Nuevo'}</div>` : ''}
-        <span class="product-emoji">${p.icon || '✨'}</span>
+        ${p.image_url
+          ? `<img src="${p.image_url}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">`
+          : `<span class="product-emoji">${p.icon || '✨'}</span>`
+        }
         <div class="product-quick">
           <button class="quick-add ${cart.find(c=>c.id===p.id)?'added':''}" onclick="addToCart(${p.id}, event)">
             ${cart.find(c=>c.id===p.id) ? '✓ Agregado' : '+ Agregar al carrito'}
@@ -252,7 +256,12 @@ function renderCartBody() {
   }
   body.innerHTML = cart.map(c => `
     <div class="cart-item">
-      <div class="cart-item-thumb">${c.icon || '✨'}</div>
+      <div class="cart-item-thumb">
+        ${c.image_url
+          ? `<img src="${c.image_url}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;">`
+          : (c.icon || '✨')
+        }
+      </div>
       <div class="cart-item-info">
         <div class="cart-item-cat">${c.cat}</div>
         <div class="cart-item-name">${c.name}</div>
