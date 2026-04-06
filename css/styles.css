@@ -555,6 +555,113 @@ section { padding: 96px 48px; }
 .cat-card.active .cat-card-name { color: rgba(253,250,247,0.9); }
 .cat-card.active .cat-icon { filter: brightness(10); }
 
+/* Skeleton para categorías cargando */
+.cat-skeleton .cat-card-inner {
+  background: var(--warm);
+  animation: catPulse 1.4s ease-in-out infinite;
+}
+@keyframes catPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ---- PANEL DE PRODUCTOS POR CATEGORÍA ---- */
+.cat-products-panel {
+  margin-top: 32px;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  animation: panelIn 0.35s ease both;
+  overflow: hidden;
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cat-products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+
+.cat-products-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cat-products-icon { font-size: 22px; }
+
+.cat-products-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--dark);
+}
+
+.cat-products-count {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--warm);
+  padding: 4px 12px;
+}
+
+.cat-products-close {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cat-products-close:hover { border-color: var(--taupe); color: var(--dark); }
+
+.cat-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  padding: 0;
+}
+
+.cat-products-grid .product-card {
+  margin: 0;
+  transform: none !important;
+  background: var(--white);
+}
+.cat-products-grid .product-card:hover { transform: none !important; }
+
+/* Empty state en panel */
+.cat-panel-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px;
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  font-family: var(--serif);
+  background: var(--white);
+}
+
+@media (max-width: 768px) {
+  .cat-products-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-products-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .cat-products-close { align-self: flex-end; }
+}
+
 /* ---- PRODUCTS ---- */
 .products-section {
   background: var(--cream);
@@ -1317,6 +1424,13 @@ footer {
 .modal-close:hover { color: var(--dark); }
 
 .modal-logo { font-family: var(--serif); font-size: 26px; color: var(--dark); margin-bottom: 6px; }
+.modal-sub  {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
 .modal-sub  { font-size: 13px; color: var(--muted); font-weight: 300; margin-bottom: 32px; }
 
 .field { margin-bottom: 18px; }
@@ -1527,7 +1641,75 @@ footer {
   transform: translateY(0);
 }
 
-/* ---- RITUALES / BLOG ---- */
+/* ---- ICON SYSTEM ---- */
+/* Todos los SVG icons heredan el color del padre */
+.cat-icon svg,
+.strip-icon svg,
+.pillar-icon svg,
+.ritual-visual svg,
+.product-emoji svg,
+.cat-products-icon svg {
+  display: block;
+  color: inherit;
+}
+
+.cat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--smoke);
+  transition: transform 0.3s, color 0.3s;
+}
+.cat-card:hover .cat-icon { transform: scale(1.1); color: var(--earth); }
+.cat-card.active .cat-icon { color: white; filter: none; }
+
+.strip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--earth);
+  flex-shrink: 0;
+}
+
+.pillar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--taupe);
+}
+
+.ritual-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--smoke);
+  opacity: 0.7;
+  transition: transform 0.4s;
+  position: relative;
+  z-index: 2;
+}
+.ritual-img--luna .ritual-visual { color: white; opacity: 0.8; }
+
+.product-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--taupe);
+  transition: transform 0.4s ease;
+}
+.product-card:hover .product-emoji { transform: scale(1.08); }
+
+.cat-products-icon {
+  display: flex;
+  align-items: center;
+  color: var(--earth);
+}
+
+.toast-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
 .rituales-section {
   background: var(--white);
   padding: 96px 48px;

@@ -126,44 +126,33 @@
       <div class="section-tag">Explorar</div>
       <h2 class="section-title">Por <em>categoría</em></h2>
     </div>
-    <div style="font-size:13px;color:var(--muted);font-weight:300;">5 colecciones disponibles</div>
+    <div class="cat-count-label" id="catCountLabel" style="font-size:13px;color:var(--muted);font-weight:300;">Cargando...</div>
   </div>
-  <div class="categories-grid reveal">
-    <div class="cat-card active" onclick="filterProducts('todos', this)">
-      <div class="cat-card-inner">
-        <span class="cat-icon">🌿</span>
-        <span class="cat-card-name">Todos</span>
-        <span class="cat-card-count">ver todo</span>
+
+  <!-- Grid de categorías — se llena desde Supabase -->
+  <div class="categories-grid reveal" id="categoriesGrid">
+    <!-- skeleton mientras carga -->
+    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
+    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
+    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
+    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
+    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
+  </div>
+
+  <!-- Panel de productos de la categoría seleccionada -->
+  <div class="cat-products-panel" id="catProductsPanel" style="display:none;">
+    <div class="cat-products-header">
+      <div class="cat-products-title-row">
+        <span class="cat-products-icon" id="catPanelIcon"></span>
+        <h3 class="cat-products-title" id="catPanelTitle">Categoría</h3>
+        <span class="cat-products-count" id="catPanelCount"></span>
       </div>
+      <button class="cat-products-close" onclick="closeCatPanel()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Cerrar
+      </button>
     </div>
-    <div class="cat-card" onclick="filterProducts('sahumerios', this)">
-      <div class="cat-card-inner">
-        <span class="cat-icon">🪄</span>
-        <span class="cat-card-name">Sahumerios</span>
-        <span class="cat-card-count">3 productos</span>
-      </div>
-    </div>
-    <div class="cat-card" onclick="filterProducts('velas', this)">
-      <div class="cat-card-inner">
-        <span class="cat-icon">🕯️</span>
-        <span class="cat-card-name">Velas</span>
-        <span class="cat-card-count">2 productos</span>
-      </div>
-    </div>
-    <div class="cat-card" onclick="filterProducts('cristales', this)">
-      <div class="cat-card-inner">
-        <span class="cat-icon">💎</span>
-        <span class="cat-card-name">Cristales</span>
-        <span class="cat-card-count">2 productos</span>
-      </div>
-    </div>
-    <div class="cat-card" onclick="filterProducts('kits', this)">
-      <div class="cat-card-inner">
-        <span class="cat-icon">🎁</span>
-        <span class="cat-card-name">Kits</span>
-        <span class="cat-card-count">2 productos</span>
-      </div>
-    </div>
+    <div class="cat-products-grid" id="catProductsGrid"></div>
   </div>
 </section>
 
@@ -202,22 +191,22 @@
     </p>
     <div class="about-pillars">
       <div class="pillar-item">
-        <span class="pillar-icon">🌿</span>
+        <span class="pillar-icon"><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M8 16l4-4 4 4"/><path d="M4 20c2-4 8-6 8-6s6 2 8 6"/></svg></span>
         <div class="pillar-line"></div>
         <span class="pillar-name">Natural</span>
       </div>
       <div class="pillar-item">
-        <span class="pillar-icon">✨</span>
+        <span class="pillar-icon"><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></span>
         <div class="pillar-line"></div>
         <span class="pillar-name">Energía</span>
       </div>
       <div class="pillar-item">
-        <span class="pillar-icon">🕊️</span>
+        <span class="pillar-icon"><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.2 3.4 21.6"/><path d="M21 3A17 17 0 0 0 3.4 21.6"/><path d="M3.4 21.6c.4-1 1-2.5 2-4"/></svg></span>
         <div class="pillar-line"></div>
         <span class="pillar-name">Bienestar</span>
       </div>
       <div class="pillar-item">
-        <span class="pillar-icon">💛</span>
+        <span class="pillar-icon"><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
         <div class="pillar-line"></div>
         <span class="pillar-name">Con amor</span>
       </div>
@@ -264,28 +253,28 @@
 <!-- Shipping strip -->
 <div class="shipping-strip">
   <div class="strip-item">
-    <span class="strip-icon">🚚</span>
+    <span class="strip-icon"><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
     <div>
       <div class="strip-text-head">Envíos a todo el país</div>
       <div class="strip-text-sub">Argentina y más</div>
     </div>
   </div>
   <div class="strip-item">
-    <span class="strip-icon">🎁</span>
+    <span class="strip-icon"><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
     <div>
       <div class="strip-text-head">Packaging especial</div>
       <div class="strip-text-sub">Cada pedido con amor</div>
     </div>
   </div>
   <div class="strip-item">
-    <span class="strip-icon">💬</span>
+    <span class="strip-icon"><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
     <div>
       <div class="strip-text-head">Atención personalizada</div>
       <div class="strip-text-sub">Por Instagram y WhatsApp</div>
     </div>
   </div>
   <div class="strip-item">
-    <span class="strip-icon">✨</span>
+    <span class="strip-icon"><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></span>
     <div>
       <div class="strip-text-head">Productos naturales</div>
       <div class="strip-text-sub">Seleccionados con intención</div>
@@ -316,7 +305,7 @@
       <div class="ritual-img ritual-img--sahumero">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Sahumerios</span>
-        <div class="ritual-visual">🪄</div>
+        <div class="ritual-visual"><svg width="52" height="52" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V10"/><path d="M8 10h8"/><path d="M10 10V7a2 2 0 0 1 4 0v3"/><path d="M9 3c0 0 .5 1.5 0 3"/><path d="M12 3c0 0 .5 1.5 0 3"/><path d="M15 3c0 0 .5 1.5 0 3"/><path d="M6 21h12"/></svg></div>
         <div class="ritual-steps-preview">
           <span>4 pasos</span>
         </div>
@@ -374,7 +363,7 @@
       <div class="ritual-img ritual-img--cristal">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Cristales</span>
-        <div class="ritual-visual">💎</div>
+        <div class="ritual-visual"><svg width="52" height="52" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 20,9 12,22 4,9"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="4" y1="9" x2="20" y2="9"/></svg></div>
         <div class="ritual-steps-preview">
           <span>5 pasos</span>
         </div>
@@ -439,7 +428,7 @@
       <div class="ritual-img ritual-img--vela">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Velas</span>
-        <div class="ritual-visual">🕯️</div>
+        <div class="ritual-visual"><svg width="52" height="52" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-2 8-6 8-12 0 0-4 2-8 0C8 8 6 4 6 4S3 8 3 13c0 5 5 8 9 9z"/><path d="M12 22c-2-1-4-4-4-7 0 0 2 1 4 0 1.5-.7 2.5-2 3-3 0 3-1 7-3 10z"/></svg></div>
         <div class="ritual-steps-preview">
           <span>3 pasos</span>
         </div>
@@ -490,7 +479,7 @@
       <div class="ritual-img ritual-img--bomba">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Baño ritual</span>
-        <div class="ritual-visual">🌸</div>
+        <div class="ritual-visual"><svg width="52" height="52" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="8" ry="5"/><path d="M4 12c0 3 3.6 6 8 6s8-3 8-6"/><path d="M7 9c.5-2 2.5-4 5-4s4.5 2 5 4"/></svg></div>
         <div class="ritual-steps-preview">
           <span>4 pasos</span>
         </div>
@@ -548,7 +537,7 @@
       <div class="ritual-img ritual-img--luna">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Luna llena</span>
-        <div class="ritual-visual">🌕</div>
+        <div class="ritual-visual"><svg width="52" height="52" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
         <div class="ritual-steps-preview">
           <span>Guía completa</span>
         </div>
@@ -606,7 +595,7 @@
       <div class="ritual-img ritual-img--difusor">
         <div class="ritual-img-overlay"></div>
         <span class="ritual-cat-badge">Aromaterapia</span>
-        <div class="ritual-visual">🚗</div>
+        <div class="ritual-visual"><svg width="52" height="52" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l3-4h8l3 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/></svg></div>
         <div class="ritual-steps-preview">
           <span>Tips</span>
         </div>
@@ -702,8 +691,6 @@
       <ul class="footer-links">
         <li><a href="#">Sobre nosotras</a></li>
         <li><a href="#">Envíos</a></li>
-        <li><a href="#">Cambios</a></li>
-        <li><a href="#">Preguntas frecuentes</a></li>
       </ul>
     </div>
     <div>
@@ -758,6 +745,7 @@
 <div class="login-modal" id="loginModal">
   <button class="modal-close" onclick="closeLogin()">✕</button>
   <div class="modal-logo">Auralia·bb</div>
+  <p class="modal-sub" id="modalSubtitle">Accedé para ver tus pedidos, guardar tu carrito y más.</p>
 
   <!-- Tabs -->
   <div class="auth-tabs">
@@ -802,6 +790,6 @@
 
 <!-- Toast -->
 <div class="toast" id="toast">
-  <span class="toast-icon" id="toastIcon">✨</span>
+  <span class="toast-icon" id="toastIcon"></span>
   <span id="toastMsg"></span>
 </div>
