@@ -18,17 +18,17 @@ let currentUser = null;
 // PRODUCTOS — carga desde Supabase con fallback local
 // ============================================================
 const FALLBACK_PRODUCTS = [
-  { id:1,  name:'Sahumerio Palo Santo',     cat:'sahumerios', price:2800,  oldPrice:null,  emoji:'🪄', bg_color:'#ede4d8', badge:'nuevo', desc:'Purificá tu espacio con el aroma del palo santo sagrado.' },
-  { id:2,  name:'Sahumerio de Lavanda',     cat:'sahumerios', price:2400,  oldPrice:null,  emoji:'💜', bg_color:'#e8e0f0', badge:null,    desc:'Relax y calma para el final del día.' },
-  { id:3,  name:'Cono Sahumador',           cat:'sahumerios', price:3200,  oldPrice:null,  emoji:'🏺', bg_color:'#f0e8d8', badge:null,    desc:'Sahumador artesanal de cerámica con diseño floral.' },
-  { id:4,  name:'Vela de Soja Natural',     cat:'velas',      price:3800,  oldPrice:null,  emoji:'🕯️', bg_color:'#f5f0e8', badge:'nuevo', desc:'Vela artesanal de soja 100% natural con fragancia a vainilla.' },
-  { id:5,  name:'Vela de Cera de Abeja',    cat:'velas',      price:4200,  oldPrice:null,  emoji:'🌟', bg_color:'#f0ead8', badge:null,    desc:'Purifica el aire y crea una atmósfera de bienestar.' },
-  { id:6,  name:'Cuarzo Rosa',              cat:'cristales',  price:1800,  oldPrice:null,  emoji:'💎', bg_color:'#f5e0e8', badge:null,    desc:'Piedra del amor incondicional y la sanación emocional.' },
-  { id:7,  name:'Amatista Cruda',           cat:'cristales',  price:2200,  oldPrice:2800,  emoji:'🔮', bg_color:'#ece0f5', badge:'promo', desc:'Protección espiritual y apertura de la intuición.' },
-  { id:8,  name:'Bombita de Baño Rosa',     cat:'bombitas',   price:1500,  oldPrice:null,  emoji:'🌸', bg_color:'#fce8f0', badge:'nuevo', desc:'Ritual de baño con sales, aceites y flores.' },
-  { id:9,  name:'Difusor para Auto',        cat:'difusores',  price:2000,  oldPrice:null,  emoji:'🚗', bg_color:'#e8f0f5', badge:null,    desc:'Aromaterapia en movimiento. Para llevar tu energía a todos lados.' },
-  { id:10, name:'Kit Ritual Completo',      cat:'kits',       price:9800,  oldPrice:12000, emoji:'🎁', bg_color:'#f0ede8', badge:'nuevo', desc:'Sahumerio + vela + cuarzo + guía de rituales.' },
-  { id:11, name:'Kit Iniciación Holística', cat:'kits',       price:7500,  oldPrice:null,  emoji:'✨', bg_color:'#e8f0e8', badge:null,    desc:'Para quienes empiezan su camino espiritual.' },
+  { id:1,  name:'Sahumerio Palo Santo',     cat:'sahumerios', price:2800,  oldPrice:null,  icon:'🪄', bg:'#ede4d8', badge:'nuevo', desc:'Purificá tu espacio con el aroma del palo santo sagrado.' },
+  { id:2,  name:'Sahumerio de Lavanda',     cat:'sahumerios', price:2400,  oldPrice:null,  icon:'💜', bg:'#e8e0f0', badge:null,    desc:'Relax y calma para el final del día.' },
+  { id:3,  name:'Cono Sahumador',           cat:'sahumerios', price:3200,  oldPrice:null,  icon:'🏺', bg:'#f0e8d8', badge:null,    desc:'Sahumador artesanal de cerámica con diseño floral.' },
+  { id:4,  name:'Vela de Soja Natural',     cat:'velas',      price:3800,  oldPrice:null,  icon:'🕯️', bg:'#f5f0e8', badge:'nuevo', desc:'Vela artesanal de soja 100% natural con fragancia a vainilla.' },
+  { id:5,  name:'Vela de Cera de Abeja',    cat:'velas',      price:4200,  oldPrice:null,  icon:'🌟', bg:'#f0ead8', badge:null,    desc:'Purifica el aire y crea una atmósfera de bienestar.' },
+  { id:6,  name:'Cuarzo Rosa',              cat:'cristales',  price:1800,  oldPrice:null,  icon:'💎', bg:'#f5e0e8', badge:null,    desc:'Piedra del amor incondicional y la sanación emocional.' },
+  { id:7,  name:'Amatista Cruda',           cat:'cristales',  price:2200,  oldPrice:2800,  icon:'🔮', bg:'#ece0f5', badge:'promo', desc:'Protección espiritual y apertura de la intuición.' },
+  { id:8,  name:'Bombita de Baño Rosa',     cat:'bombitas',   price:1500,  oldPrice:null,  icon:'🌸', bg:'#fce8f0', badge:'nuevo', desc:'Ritual de baño con sales, aceites y flores.' },
+  { id:9,  name:'Difusor para Auto',        cat:'difusores',  price:2000,  oldPrice:null,  icon:'🚗', bg:'#e8f0f5', badge:null,    desc:'Aromaterapia en movimiento.' },
+  { id:10, name:'Kit Ritual Completo',      cat:'kits',       price:9800,  oldPrice:12000, icon:'🎁', bg:'#f0ede8', badge:'nuevo', desc:'Sahumerio + vela + cuarzo + guía de rituales.' },
+  { id:11, name:'Kit Iniciación Holística', cat:'kits',       price:7500,  oldPrice:null,  icon:'✨', bg:'#e8f0e8', badge:null,    desc:'Para quienes empiezan su camino espiritual.' },
 ];
 
 async function loadProducts() {
@@ -50,10 +50,25 @@ async function loadProducts() {
       desc:     p.description || '',
       oldPrice: p.old_price || null,
     }));
-  } catch (e) {
+  } catch(e) {
     console.warn('Usando productos locales:', e?.message);
-    products = FALLBACK_PRODUCTS.map(p => ({ ...p, icon: p.emoji, bg: p.bg_color }));
+    products = FALLBACK_PRODUCTS;
   }
+  renderProducts();
+}
+
+// alias para compatibilidad
+function cargarProductos() { loadProducts(); }
+
+function mostrarProductos(data) {
+  products = data.map(p => ({
+    ...p,
+    cat:  p.categories?.slug || p.category_slug || '',
+    icon: p.emoji || '✨',
+    bg:   p.bg_color || '#ede4d8',
+    desc: p.description || '',
+    oldPrice: p.old_price || null,
+  }));
   renderProducts();
 }
 
@@ -166,13 +181,51 @@ function changeQty(id, delta) {
   renderCartBody();
 }
 
-function saveCartLocal() {
-  try { localStorage.setItem('auralia_cart', JSON.stringify(cart)); } catch(_) {}
+// ============================================================
+// CART PERSISTENCE — Supabase si hay sesión, localStorage si no
+// ============================================================
+async function saveCart() {
+  if (currentUser) {
+    try {
+      await db.from('carts').upsert({
+        user_id: currentUser.id,
+        items: JSON.stringify(cart),
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'user_id' });
+    } catch(e) { console.warn('Error guardando carrito:', e.message); }
+  }
+  try { localStorage.setItem('auralia_cart_' + (currentUser?.id || 'anon'), JSON.stringify(cart)); } catch(_) {}
 }
+
+async function loadUserCart(userId) {
+  try {
+    const { data } = await db.from('carts').select('items').eq('user_id', userId).single();
+    if (data?.items) {
+      cart = JSON.parse(data.items);
+      updateCartUI();
+      renderCartBody();
+      renderProducts(getActiveFilter());
+    }
+  } catch(e) {
+    try {
+      const saved = localStorage.getItem('auralia_cart_' + userId);
+      if (saved) { cart = JSON.parse(saved); updateCartUI(); renderCartBody(); }
+    } catch(_) {}
+  }
+}
+
+function clearCartUI() {
+  cart = [];
+  updateCartUI();
+  renderCartBody();
+  renderProducts(getActiveFilter());
+}
+
+function saveCartLocal() { saveCart(); }
 
 function loadCartLocal() {
   try {
-    const saved = localStorage.getItem('auralia_cart');
+    const saved = localStorage.getItem('auralia_cart_anon');
     if (saved) cart = JSON.parse(saved);
   } catch(_) {}
 }
@@ -347,24 +400,50 @@ async function doLogout() {
   showToast('Sesión cerrada', '👋');
 }
 
+// Abre/cierra el dropdown — NO cierra sesión
+function toggleUserMenu() {
+  document.getElementById('userChip').classList.toggle('menu-open');
+}
+
+// Cerrar dropdown al hacer clic fuera del chip
+document.addEventListener('click', (e) => {
+  const chip = document.getElementById('userChip');
+  if (chip && !chip.contains(e.target)) chip.classList.remove('menu-open');
+});
+
+// Botón "Cerrar sesión" dentro del dropdown
+function handleLogout(e) {
+  e.stopPropagation();
+  document.getElementById('userChip').classList.remove('menu-open');
+  doLogout();
+}
+
 function setLoggedIn(user) {
   currentUser = user;
-  const name = user.user_metadata?.full_name || user.email?.split('@')[0] || 'Usuaria';
+  const name  = user.user_metadata?.full_name || user.email?.split('@')[0] || 'Usuaria';
+  const email = user.email || '';
+
   document.getElementById('loginNavBtn').style.display = 'none';
   const chip = document.getElementById('userChip');
   chip.classList.add('visible');
-  document.getElementById('userAvatar').textContent = name[0].toUpperCase();
-  document.getElementById('userNameNav').textContent = name;
-  chip.title = 'Cerrar sesión';
-  chip.style.cursor = 'pointer';
-  chip.onclick = doLogout;
+  chip.classList.remove('menu-open');
+  chip.onclick = toggleUserMenu;
+
+  document.getElementById('userAvatar').textContent    = name[0].toUpperCase();
+  document.getElementById('userNameNav').textContent   = name;
+  document.getElementById('dropdownName').textContent  = name;
+  document.getElementById('dropdownEmail').textContent = email;
+
+  loadUserCart(user.id);
 }
 
 function setLoggedOut() {
   document.getElementById('loginNavBtn').style.display = '';
   const chip = document.getElementById('userChip');
   chip.classList.remove('visible');
+  chip.classList.remove('menu-open');
   chip.onclick = null;
+  clearCartUI();
 }
 
 function showAuthError(msg) {

@@ -24,9 +24,21 @@
 
   <div class="nav-actions">
     <button class="nav-btn" id="loginNavBtn" onclick="openLogin()">Ingresar</button>
-    <div class="user-chip" id="userChip">
+    <div class="user-chip" id="userChip" onclick="toggleUserMenu()">
       <div class="user-avatar" id="userAvatar">?</div>
       <span class="user-name" id="userNameNav">Usuario</span>
+      <svg class="user-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="user-dropdown-info">
+          <span class="user-dropdown-name" id="dropdownName">—</span>
+          <span class="user-dropdown-email" id="dropdownEmail">—</span>
+        </div>
+        <div class="user-dropdown-divider"></div>
+        <button class="user-dropdown-item user-dropdown-logout" onclick="handleLogout(event)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h3M9 10l3-3-3-3M12 7H5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Cerrar sesión
+        </button>
+      </div>
     </div>
     <button class="cart-btn" onclick="openCart()">
       🛒
