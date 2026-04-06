@@ -1,9 +1,8 @@
 <!-- Nav -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">Auralia<span class="dot">·</span>bb</a>
+  <a href="#" class="nav-logo">Noda<span class="dot">.</span>web</a>
 
   <ul class="nav-links">
-    <li><a href="#categorias">Categorías</a></li>
     <li><a href="#productos">Tienda</a></li>
     <li><a href="#rituales">Rituales</a></li>
     <li><a href="#nosotros">Nosotras</a></li>
@@ -40,7 +39,6 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#categorias" onclick="closeMobileMenu()">Categorías</a>
   <a href="#productos" onclick="closeMobileMenu()">Tienda</a>
   <a href="#rituales" onclick="closeMobileMenu()">Rituales</a>
   <a href="#nosotros" onclick="closeMobileMenu()">Nosotras</a>
@@ -85,7 +83,7 @@
     <div class="hero-center-piece">
       <!-- Candle visual -->
       <div class="hero-candle">
-        <span class="hero-candle-label">auralia</span>
+        <span class="hero-candle-label">noda</span>
       </div>
       <!-- Crystal row -->
       <div class="hero-crystals">
@@ -119,43 +117,6 @@
   </div>
 </div>
 
-<!-- Categories -->
-<section class="categories-section" id="categorias">
-  <div class="categories-header reveal">
-    <div>
-      <div class="section-tag">Explorar</div>
-      <h2 class="section-title">Por <em>categoría</em></h2>
-    </div>
-    <div class="cat-count-label" id="catCountLabel" style="font-size:13px;color:var(--muted);font-weight:300;">Cargando...</div>
-  </div>
-
-  <!-- Grid de categorías — se llena desde Supabase -->
-  <div class="categories-grid reveal" id="categoriesGrid">
-    <!-- skeleton mientras carga -->
-    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
-    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
-    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
-    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
-    <div class="cat-card cat-skeleton"><div class="cat-card-inner"></div></div>
-  </div>
-
-  <!-- Panel de productos de la categoría seleccionada -->
-  <div class="cat-products-panel" id="catProductsPanel" style="display:none;">
-    <div class="cat-products-header">
-      <div class="cat-products-title-row">
-        <span class="cat-products-icon" id="catPanelIcon"></span>
-        <h3 class="cat-products-title" id="catPanelTitle">Categoría</h3>
-        <span class="cat-products-count" id="catPanelCount"></span>
-      </div>
-      <button class="cat-products-close" onclick="closeCatPanel()">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Cerrar
-      </button>
-    </div>
-    <div class="cat-products-grid" id="catProductsGrid"></div>
-  </div>
-</section>
-
 <!-- Products -->
 <section class="products-section" id="productos">
   <div class="reveal">
@@ -165,13 +126,8 @@
   </div>
 
   <div class="products-filter reveal" id="filterBar">
+    <!-- Se llena dinámicamente desde Supabase -->
     <button class="filter-pill active" onclick="filterProducts('todos', null, this)">Todos</button>
-    <button class="filter-pill" onclick="filterProducts('sahumerios', null, this)">Sahumerios</button>
-    <button class="filter-pill" onclick="filterProducts('velas', null, this)">Velas</button>
-    <button class="filter-pill" onclick="filterProducts('cristales', null, this)">Cristales</button>
-    <button class="filter-pill" onclick="filterProducts('bombitas', null, this)">Bombitas</button>
-    <button class="filter-pill" onclick="filterProducts('difusores', null, this)">Difusores</button>
-    <button class="filter-pill" onclick="filterProducts('kits', null, this)">Kits</button>
   </div>
 
   <div class="products-grid" id="productsGrid"></div>
@@ -184,7 +140,7 @@
     <h2 class="section-title">Cuerpo, mente<br><em>& alma</em></h2>
     <div class="about-quote">
       <p>"Cada producto que creamos nace de un ritual. Creemos que el bienestar empieza en los pequeños momentos."</p>
-      <cite>— Auralia.bb, Bahía Blanca</cite>
+      <cite>— Noda.web</cite>
     </div>
     <p style="font-size:14px;color:var(--muted);font-weight:300;line-height:1.85;max-width:360px;margin-bottom:32px;">
       Somos un emprendimiento de Bahía Blanca dedicado al bienestar holístico. Trabajamos con sahumerios, velas, cristales y productos energéticos seleccionados con amor e intención para cada espacio y cada persona.
@@ -217,7 +173,7 @@
     <div class="about-visual">
       <div class="about-circle">
         <div>
-          <div class="about-logo-text">Auralia.bb</div>
+          <div class="about-logo-text">Noda.web</div>
           <div class="about-logo-sub">Sahumerios · Velas · Cristales</div>
         </div>
       </div>
@@ -646,7 +602,7 @@
   <!-- CTA -->
   <div class="rituales-cta reveal">
     <p class="rituales-cta-text">¿Tenés una pregunta sobre cómo usar tus productos?</p>
-    <a href="https://wa.me/542915753158" target="_blank" class="rituales-cta-btn">
+    <a href="https://wa.me/542916454532" target="_blank" class="rituales-cta-btn">
       Consultanos por WhatsApp
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -669,11 +625,11 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-brand-logo">Auralia<span>·</span>bb</div>
+      <div class="footer-brand-logo">Noda<span>.</span>web</div>
       <p class="footer-brand-desc">Emprendimiento holístico de Bahía Blanca. Sahumerios, velas, cristales y mucho más para tu bienestar.</p>
       <div class="footer-social">
-        <a href="https://www.instagram.com/auralia.bb/" target="_blank" class="social-pill">Instagram</a>
-        <a href="https://wa.me/542915753158" target="_blank" class="social-pill">WhatsApp</a>
+        <a href="https://www.instagram.com/noda.web/" target="_blank" class="social-pill">Instagram</a>
+        <a href="https://wa.me/542916454532" target="_blank" class="social-pill">WhatsApp</a>
       </div>
     </div>
     <div>
@@ -696,14 +652,14 @@
     <div>
       <div class="footer-col-title">Contacto</div>
       <ul class="footer-links">
-        <li><a href="https://www.instagram.com/auralia.bb/" target="_blank">@auralia.bb</a></li>
-        <li><a href="https://wa.me/542915753158" target="_blank">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/noda.web/" target="_blank">@noda.web</a></li>
+        <li><a href="https://wa.me/542916454532" target="_blank">WhatsApp</a></li>
         <li><a href="#">Bahía Blanca, BA</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2025 <span>Auralia.bb</span> — Todos los derechos reservados</div>
+    <div class="footer-copy">© 2025 <span>Noda.web</span> — Todos los derechos reservados</div>
     <div class="footer-location">📍 Bahía Blanca, Buenos Aires, Argentina</div>
   </div>
 </footer>
@@ -744,7 +700,7 @@
 <!-- Auth Modal -->
 <div class="login-modal" id="loginModal">
   <button class="modal-close" onclick="closeLogin()">✕</button>
-  <div class="modal-logo">Auralia·bb</div>
+  <div class="modal-logo">Noda.web</div>
   <p class="modal-sub" id="modalSubtitle">Accedé para ver tus pedidos, guardar tu carrito y más.</p>
 
   <!-- Tabs -->
@@ -787,6 +743,11 @@
 
 <!-- Overlay -->
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<!-- WhatsApp Flotante -->
+<a href="https://wa.me/542916454532" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
 
 <!-- Toast -->
 <div class="toast" id="toast">

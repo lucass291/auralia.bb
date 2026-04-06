@@ -137,6 +137,9 @@ const FALLBACK_CATEGORIES = [
   { id:6, name:'Kits',       slug:'kits'       },
 ];
 
+// ============================================================
+// CATEGORÍAS — carga desde Supabase y rellena los filter pills
+// ============================================================
 async function loadCategories() {
   let cats = [];
   try {
@@ -150,135 +153,21 @@ async function loadCategories() {
     console.warn('Usando categorías locales:', e?.message);
     cats = FALLBACK_CATEGORIES;
   }
-  renderCategoryCards(cats);
+  renderFilterPills(cats);
 }
 
-function renderCategoryCards(cats) {
-  const grid  = document.getElementById('categoriesGrid');
-  const label = document.getElementById('catCountLabel');
-  if (label) label.textContent = `${cats.length} colecciones disponibles`;
+function renderFilterPills(cats) {
+  const bar = document.getElementById('filterBar');
+  if (!bar) return;
 
-  // Card "Todos" + una por cada categoría
-  grid.innerHTML = `
-    <div class="cat-card active" id="cat-todos" onclick="selectCategory('todos', this, 'Todos')">
-      <div class="cat-card-inner">
-        <span class="cat-icon">${catIcon('todos')}</span>
-        <span class="cat-card-name">Todos</span>
-        <span class="cat-card-count">ver todo</span>
-      </div>
-    </div>
+  // "Todos" siempre primero, luego una pill por cada categoría de la BD
+  bar.innerHTML = `
+    <button class="filter-pill active" onclick="filterProducts('todos', null, this)">Todos</button>
     ${cats.map(c => `
-    <div class="cat-card" id="cat-${c.slug}" onclick="selectCategory('${c.slug}', this, '${c.name}')">
-      <div class="cat-card-inner">
-        <span class="cat-icon">${catIcon(c.slug)}</span>
-        <span class="cat-card-name">${c.name}</span>
-        <span class="cat-card-count" id="count-${c.slug}">—</span>
-      </div>
-    </div>`).join('')}
+      <button class="filter-pill" onclick="filterProducts('${c.slug}', null, this)">
+        ${c.name}
+      </button>`).join('')}
   `;
-
-  // Contar productos por categoría una vez cargados
-  updateCategoryCounts();
-}
-
-function updateCategoryCounts() {
-  // Espera a que products esté cargado
-  if (!products.length) {
-    setTimeout(updateCategoryCounts, 300);
-    return;
-  }
-  FALLBACK_CATEGORIES.forEach(c => {
-    const el = document.getElementById('count-' + c.slug);
-    if (!el) return;
-    const count = products.filter(p => p.cat === c.slug).length;
-    el.textContent = count === 1 ? '1 producto' : `${count} productos`;
-  });
-  // También para categorías de Supabase por si tienen slug diferente
-  document.querySelectorAll('[id^="count-"]').forEach(el => {
-    const slug = el.id.replace('count-', '');
-    const count = products.filter(p => p.cat === slug).length;
-    if (count > 0) el.textContent = count === 1 ? '1 producto' : `${count} productos`;
-  });
-}
-
-// Seleccionar una categoría: muestra el panel inline si no es "todos",
-// o lo cierra si es "todos"
-let activeCatSlug = 'todos';
-
-function selectCategory(slug, cardEl, name) {
-  // Actualizar estado activo de las cards
-  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
-  cardEl.classList.add('active');
-  activeCatSlug = slug;
-
-  if (slug === 'todos') {
-    closeCatPanel();
-    return;
-  }
-
-  // Filtrar productos de esta categoría
-  const filtered = products.filter(p => p.cat === slug);
-
-  // Actualizar header del panel
-  document.getElementById('catPanelIcon').innerHTML = catIcon(slug, 28);
-  document.getElementById('catPanelTitle').textContent = name;
-  document.getElementById('catPanelCount').textContent =
-    filtered.length === 1 ? '1 producto' : `${filtered.length} productos`;
-
-  // Renderizar productos en el panel
-  const grid = document.getElementById('catProductsGrid');
-  if (!filtered.length) {
-    grid.innerHTML = `<div class="cat-panel-empty">No hay productos en esta categoría todavía.</div>`;
-  } else {
-    grid.innerHTML = filtered.map(p => `
-      <div class="product-card" id="cprod-${p.id}">
-        <div class="product-img" style="background:${p.bg || '#ede4d8'}">
-          ${p.badge ? `<div class="product-badge badge-${p.badge}">${p.badge === 'promo' ? 'Promo' : 'Nuevo'}</div>` : ''}
-          ${p.image_url
-            ? `<img src="${p.image_url}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">`
-            : `<span class="product-emoji">${catIcon(p.cat, 40)}</span>`
-          }
-          <div class="product-quick">
-            <button class="quick-add ${cart.find(c=>c.id===p.id)?'added':''}" onclick="addToCart(${p.id}, event)">
-              ${cart.find(c=>c.id===p.id) ? '✓ Agregado' : '+ Agregar al carrito'}
-            </button>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="product-cat">${p.cat}</div>
-          <div class="product-name">${p.name}</div>
-          <div class="product-desc">${p.desc}</div>
-          <div class="product-footer">
-            <div class="product-price">
-              $${Number(p.price).toLocaleString('es-AR')}
-              ${p.oldPrice ? `<span class="price-old">$${Number(p.oldPrice).toLocaleString('es-AR')}</span>` : ''}
-            </div>
-            <button class="add-cart-btn ${cart.find(c=>c.id===p.id)?'in-cart':''}" onclick="addToCart(${p.id}, event)">
-              ${cart.find(c=>c.id===p.id) ? '✓' : '+'}
-            </button>
-          </div>
-        </div>
-      </div>`).join('');
-  }
-
-  // Mostrar panel
-  const panel = document.getElementById('catProductsPanel');
-  panel.style.display = 'block';
-
-  // Scroll suave al panel
-  setTimeout(() => {
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 50);
-}
-
-function closeCatPanel() {
-  const panel = document.getElementById('catProductsPanel');
-  panel.style.display = 'none';
-  // Resetear card activa a "Todos"
-  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
-  const todosCard = document.getElementById('cat-todos');
-  if (todosCard) todosCard.classList.add('active');
-  activeCatSlug = 'todos';
 }
 
 function showProductsSkeleton() {
@@ -798,5 +687,5 @@ function filterArticles(cat, pillBtn) {
 // INIT
 // ============================================================
 updateCartUI();
-loadCategories();
-loadProducts().then(() => updateCategoryCounts());
+loadCategories();   // rellena los filter pills desde Supabase
+loadProducts();     // carga productos desde Supabase
